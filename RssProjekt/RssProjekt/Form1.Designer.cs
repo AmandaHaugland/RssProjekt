@@ -52,7 +52,7 @@
             this.lvPodcast.Location = new System.Drawing.Point(15, 12);
             this.lvPodcast.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lvPodcast.Name = "lvPodcast";
-            this.lvPodcast.Size = new System.Drawing.Size(563, 233);
+            this.lvPodcast.Size = new System.Drawing.Size(690, 233);
             this.lvPodcast.TabIndex = 0;
             this.lvPodcast.UseCompatibleStateImageBehavior = false;
             this.lvPodcast.View = System.Windows.Forms.View.Details;
@@ -133,6 +133,12 @@
             // cbUpdate
             // 
             this.cbUpdate.FormattingEnabled = true;
+            this.cbUpdate.Items.AddRange(new object[] {
+            "",
+            "15 minuter",
+            "30 minuter",
+            "1 timme",
+            "3 timmar"});
             this.cbUpdate.Location = new System.Drawing.Point(584, 271);
             this.cbUpdate.Name = "cbUpdate";
             this.cbUpdate.Size = new System.Drawing.Size(121, 24);
