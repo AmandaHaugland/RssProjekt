@@ -39,6 +39,8 @@
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.cbUpdate = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lvPodcast
@@ -128,11 +130,30 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Kategori";
             // 
+            // cbUpdate
+            // 
+            this.cbUpdate.FormattingEnabled = true;
+            this.cbUpdate.Location = new System.Drawing.Point(584, 271);
+            this.cbUpdate.Name = "cbUpdate";
+            this.cbUpdate.Size = new System.Drawing.Size(121, 24);
+            this.cbUpdate.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(581, 254);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(142, 17);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Uppdateringsintervall";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cbUpdate);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbCategory);
@@ -143,7 +164,8 @@
             this.Controls.Add(this.lvPodcast);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Podcast";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,6 +184,8 @@
         private System.Windows.Forms.ComboBox cbCategory;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbUpdate;
+        private System.Windows.Forms.Label label3;
     }
 }
 
