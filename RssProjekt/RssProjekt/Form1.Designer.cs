@@ -41,6 +41,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbUpdate = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.läggTillKategorie = new System.Windows.Forms.Button();
+            this.ändraKtegori = new System.Windows.Forms.Button();
+            this.taBortKategorie = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvPodcast
@@ -49,10 +55,10 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
-            this.lvPodcast.Location = new System.Drawing.Point(15, 12);
-            this.lvPodcast.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lvPodcast.Location = new System.Drawing.Point(11, 10);
+            this.lvPodcast.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lvPodcast.Name = "lvPodcast";
-            this.lvPodcast.Size = new System.Drawing.Size(690, 233);
+            this.lvPodcast.Size = new System.Drawing.Size(519, 190);
             this.lvPodcast.TabIndex = 0;
             this.lvPodcast.UseCompatibleStateImageBehavior = false;
             this.lvPodcast.View = System.Windows.Forms.View.Details;
@@ -71,62 +77,63 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(20, 301);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(15, 245);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
+            this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // tbUrl
             // 
-            this.tbUrl.Location = new System.Drawing.Point(15, 271);
-            this.tbUrl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbUrl.Location = new System.Drawing.Point(11, 220);
             this.tbUrl.Name = "tbUrl";
-            this.tbUrl.Size = new System.Drawing.Size(228, 22);
+            this.tbUrl.Size = new System.Drawing.Size(172, 20);
             this.tbUrl.TabIndex = 2;
             // 
             // URLLable
             // 
             this.URLLable.AutoSize = true;
-            this.URLLable.Location = new System.Drawing.Point(17, 254);
-            this.URLLable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.URLLable.Location = new System.Drawing.Point(13, 206);
             this.URLLable.Name = "URLLable";
-            this.URLLable.Size = new System.Drawing.Size(36, 17);
+            this.URLLable.Size = new System.Drawing.Size(29, 13);
             this.URLLable.TabIndex = 3;
             this.URLLable.Text = "URL";
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(250, 271);
+            this.tbName.Location = new System.Drawing.Point(188, 220);
+            this.tbName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(201, 22);
+            this.tbName.Size = new System.Drawing.Size(152, 20);
             this.tbName.TabIndex = 4;
             // 
             // cbCategory
             // 
             this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(457, 271);
+            this.cbCategory.Location = new System.Drawing.Point(343, 220);
+            this.cbCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(121, 24);
+            this.cbCategory.Size = new System.Drawing.Size(92, 21);
             this.cbCategory.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(250, 254);
+            this.label1.Location = new System.Drawing.Point(188, 206);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 17);
+            this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Namn";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(472, 254);
+            this.label2.Location = new System.Drawing.Point(354, 206);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 17);
+            this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Kategori";
             // 
@@ -139,25 +146,86 @@
             "30 minuter",
             "1 timme",
             "3 timmar"});
-            this.cbUpdate.Location = new System.Drawing.Point(584, 271);
+            this.cbUpdate.Location = new System.Drawing.Point(438, 220);
+            this.cbUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbUpdate.Name = "cbUpdate";
-            this.cbUpdate.Size = new System.Drawing.Size(121, 24);
+            this.cbUpdate.Size = new System.Drawing.Size(92, 21);
             this.cbUpdate.TabIndex = 8;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(581, 254);
+            this.label3.Location = new System.Drawing.Point(436, 206);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(142, 17);
+            this.label3.Size = new System.Drawing.Size(106, 13);
             this.label3.TabIndex = 9;
             this.label3.Text = "Uppdateringsintervall";
             // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(574, 39);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(288, 161);
+            this.listView1.TabIndex = 10;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(574, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(86, 18);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Kategorier";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(574, 221);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(285, 20);
+            this.textBox1.TabIndex = 12;
+            // 
+            // läggTillKategorie
+            // 
+            this.läggTillKategorie.Location = new System.Drawing.Point(577, 262);
+            this.läggTillKategorie.Name = "läggTillKategorie";
+            this.läggTillKategorie.Size = new System.Drawing.Size(75, 23);
+            this.läggTillKategorie.TabIndex = 13;
+            this.läggTillKategorie.Text = "Lägg till";
+            this.läggTillKategorie.UseVisualStyleBackColor = true;
+            this.läggTillKategorie.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // ändraKtegori
+            // 
+            this.ändraKtegori.Location = new System.Drawing.Point(692, 262);
+            this.ändraKtegori.Name = "ändraKtegori";
+            this.ändraKtegori.Size = new System.Drawing.Size(75, 23);
+            this.ändraKtegori.TabIndex = 14;
+            this.ändraKtegori.Text = "Ändra";
+            this.ändraKtegori.UseVisualStyleBackColor = true;
+            // 
+            // taBortKategorie
+            // 
+            this.taBortKategorie.Location = new System.Drawing.Point(787, 262);
+            this.taBortKategorie.Name = "taBortKategorie";
+            this.taBortKategorie.Size = new System.Drawing.Size(75, 23);
+            this.taBortKategorie.TabIndex = 15;
+            this.taBortKategorie.Text = "Ta bort";
+            this.taBortKategorie.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(946, 415);
+            this.Controls.Add(this.taBortKategorie);
+            this.Controls.Add(this.ändraKtegori);
+            this.Controls.Add(this.läggTillKategorie);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbUpdate);
             this.Controls.Add(this.label2);
@@ -168,7 +236,7 @@
             this.Controls.Add(this.tbUrl);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lvPodcast);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Podcast";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -192,6 +260,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbUpdate;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button läggTillKategorie;
+        private System.Windows.Forms.Button ändraKtegori;
+        private System.Windows.Forms.Button taBortKategorie;
     }
 }
 
