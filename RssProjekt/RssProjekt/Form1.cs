@@ -31,5 +31,10 @@ namespace RssProjekt
         {
 
         }
+
+        public void tbUrl_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
