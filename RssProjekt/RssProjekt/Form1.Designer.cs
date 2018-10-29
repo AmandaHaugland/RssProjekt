@@ -49,6 +49,8 @@
             this.taBortKategorie = new System.Windows.Forms.Button();
             this.btnAndraPod = new System.Windows.Forms.Button();
             this.btnTaBortPod = new System.Windows.Forms.Button();
+            this.lVFeed = new System.Windows.Forms.ListView();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lvPodcast
@@ -238,11 +240,31 @@
             this.btnTaBortPod.Text = "Ta bort";
             this.btnTaBortPod.UseVisualStyleBackColor = true;
             // 
+            // lVFeed
+            // 
+            this.lVFeed.Location = new System.Drawing.Point(11, 314);
+            this.lVFeed.Name = "lVFeed";
+            this.lVFeed.Size = new System.Drawing.Size(377, 157);
+            this.lVFeed.TabIndex = 18;
+            this.lVFeed.UseCompatibleStateImageBehavior = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(11, 287);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(55, 24);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Feed";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(946, 415);
+            this.ClientSize = new System.Drawing.Size(1011, 483);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lVFeed);
             this.Controls.Add(this.btnTaBortPod);
             this.Controls.Add(this.btnAndraPod);
             this.Controls.Add(this.taBortKategorie);
@@ -293,6 +315,8 @@
         private System.Windows.Forms.Button taBortKategorie;
         private System.Windows.Forms.Button btnAndraPod;
         private System.Windows.Forms.Button btnTaBortPod;
+        private System.Windows.Forms.ListView lVFeed;
+        private System.Windows.Forms.Label label5;
     }
 }
 
