@@ -80,17 +80,18 @@
             // btnLaggTillPod
             // 
             this.btnLaggTillPod.Location = new System.Drawing.Point(20, 302);
-            this.btnLaggTillPod.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLaggTillPod.Margin = new System.Windows.Forms.Padding(4);
             this.btnLaggTillPod.Name = "btnLaggTillPod";
             this.btnLaggTillPod.Size = new System.Drawing.Size(100, 28);
             this.btnLaggTillPod.TabIndex = 1;
             this.btnLaggTillPod.Text = "Lägg till";
             this.btnLaggTillPod.UseVisualStyleBackColor = true;
+            this.btnLaggTillPod.Click += new System.EventHandler(this.btnLaggTillPod_Click);
             // 
             // tbUrl
             // 
             this.tbUrl.Location = new System.Drawing.Point(15, 271);
-            this.tbUrl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbUrl.Margin = new System.Windows.Forms.Padding(4);
             this.tbUrl.Name = "tbUrl";
             this.tbUrl.Size = new System.Drawing.Size(228, 22);
             this.tbUrl.TabIndex = 2;
@@ -167,7 +168,7 @@
             // listView1
             // 
             this.listView1.Location = new System.Drawing.Point(765, 48);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(383, 197);
             this.listView1.TabIndex = 10;
@@ -187,7 +188,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(765, 272);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(379, 22);
             this.textBox1.TabIndex = 12;
@@ -195,7 +196,7 @@
             // läggTillKategorie
             // 
             this.läggTillKategorie.Location = new System.Drawing.Point(769, 322);
-            this.läggTillKategorie.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.läggTillKategorie.Margin = new System.Windows.Forms.Padding(4);
             this.läggTillKategorie.Name = "läggTillKategorie";
             this.läggTillKategorie.Size = new System.Drawing.Size(100, 28);
             this.läggTillKategorie.TabIndex = 13;
@@ -206,7 +207,7 @@
             // ändraKtegori
             // 
             this.ändraKtegori.Location = new System.Drawing.Point(923, 322);
-            this.ändraKtegori.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ändraKtegori.Margin = new System.Windows.Forms.Padding(4);
             this.ändraKtegori.Name = "ändraKtegori";
             this.ändraKtegori.Size = new System.Drawing.Size(100, 28);
             this.ändraKtegori.TabIndex = 14;
@@ -216,7 +217,7 @@
             // taBortKategorie
             // 
             this.taBortKategorie.Location = new System.Drawing.Point(1049, 322);
-            this.taBortKategorie.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.taBortKategorie.Margin = new System.Windows.Forms.Padding(4);
             this.taBortKategorie.Name = "taBortKategorie";
             this.taBortKategorie.Size = new System.Drawing.Size(100, 28);
             this.taBortKategorie.TabIndex = 15;

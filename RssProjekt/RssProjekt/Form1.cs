@@ -31,5 +31,10 @@ namespace RssProjekt
         {
 
         }
+
+        private void btnLaggTillPod_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
