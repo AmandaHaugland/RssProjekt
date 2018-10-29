@@ -32,7 +32,7 @@ namespace RssProjekt
 
         }
 
-        private void btnLaggTillPod_Click(object sender, EventArgs e)
+        public void tbUrl_TextChanged(object sender, EventArgs e)
         {
 
         }
