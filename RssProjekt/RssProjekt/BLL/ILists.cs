@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace RssProjekt.BLL
 {
-    interface IPodcast
+    interface ILists
     {
+        String MakeListView();
 
     }
 }
