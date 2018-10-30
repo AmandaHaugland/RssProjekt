@@ -31,9 +31,9 @@
             this.lvPodcast = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnLaggTillPod = new System.Windows.Forms.Button();
             this.tbUrl = new System.Windows.Forms.TextBox();
             this.URLLable = new System.Windows.Forms.Label();
@@ -79,20 +79,17 @@
             // 
             this.columnHeader2.Text = "Namn";
             // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Avsnitt";
+            // 
             // columnHeader4
             // 
-            this.columnHeader4.DisplayIndex = 3;
             this.columnHeader4.Text = "Kategori";
             // 
             // columnHeader5
             // 
-            this.columnHeader5.DisplayIndex = 4;
             this.columnHeader5.Text = "Uppdatering";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.DisplayIndex = 2;
-            this.columnHeader3.Text = "Avsnitt";
             // 
             // btnLaggTillPod
             // 
@@ -134,6 +131,7 @@
             // 
             // cbCategory
             // 
+            this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategory.FormattingEnabled = true;
             this.cbCategory.Location = new System.Drawing.Point(457, 271);
             this.cbCategory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -161,6 +159,7 @@
             // 
             // cbUpdate
             // 
+            this.cbUpdate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbUpdate.FormattingEnabled = true;
             this.cbUpdate.Items.AddRange(new object[] {
             "",
