@@ -72,21 +72,32 @@ namespace RssProjekt
             var kategoriToAdd = cbCategory.Text;
             var uppdateringToAdd = cbUpdate.Text;
             //Här ska vi köra en validering.....
-            
-           Podcast podToAdd = new Podcast
-            {
-                Namn = nameToAdd,
-                RssUrl = urlToAdd,
-                Kategori = kategoriToAdd,
-                Uppdatering = uppdateringToAdd
-            };
 
-            tbName.Clear();
-            tbUrl.Clear();
-            cbCategory.SelectedIndex = -1;
-            cbUpdate.SelectedIndex = -1;
-            Podcasts.Add(podToAdd);
-            UpdatePodList(); 
+            Validering valid = new Validering();
+            valid.CheckIfPod(urlToAdd, nameToAdd, kategoriToAdd, uppdateringToAdd
+                );
+
+            if (valid.CheckIfPod(urlToAdd, nameToAdd, kategoriToAdd, uppdateringToAdd))
+            {
+                Podcast podToAdd = new Podcast
+                {
+                    Namn = nameToAdd,
+                    RssUrl = urlToAdd,
+                    Kategori = kategoriToAdd,
+                    Uppdatering = uppdateringToAdd
+                };
+
+
+
+
+
+                tbName.Clear();
+                tbUrl.Clear();
+                cbCategory.SelectedIndex = -1;
+                cbUpdate.SelectedIndex = -1;
+                Podcasts.Add(podToAdd);
+                UpdatePodList();
+            }
         }
     }
 }
