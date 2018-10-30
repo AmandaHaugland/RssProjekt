@@ -8,6 +8,13 @@ namespace RssProjekt.BLL
 {
     public class Kategorier
     {
+        List<string> KategoriLista = new List<string>();
 
+        public List<string> ReturnList()
+        {
+            return KategoriLista;
+        }
+
+        
     }
 }

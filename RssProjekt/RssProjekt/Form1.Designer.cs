@@ -43,7 +43,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbUpdate = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lvCategory = new System.Windows.Forms.ListView();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.läggTillKategorie = new System.Windows.Forms.Button();
@@ -182,14 +182,15 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Uppdateringsintervall";
             // 
-            // listView1
+            // lvCategory
             // 
-            this.listView1.Location = new System.Drawing.Point(765, 48);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(383, 197);
-            this.listView1.TabIndex = 10;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lvCategory.Location = new System.Drawing.Point(765, 48);
+            this.lvCategory.Margin = new System.Windows.Forms.Padding(4);
+            this.lvCategory.Name = "lvCategory";
+            this.lvCategory.Size = new System.Drawing.Size(383, 197);
+            this.lvCategory.TabIndex = 10;
+            this.lvCategory.UseCompatibleStateImageBehavior = false;
+            this.lvCategory.View = System.Windows.Forms.View.List;
             // 
             // label4
             // 
@@ -295,7 +296,7 @@
             this.Controls.Add(this.läggTillKategorie);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lvCategory);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbUpdate);
             this.Controls.Add(this.label2);
@@ -330,7 +331,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbUpdate;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lvCategory;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button läggTillKategorie;
