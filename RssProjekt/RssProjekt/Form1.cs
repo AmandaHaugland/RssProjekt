@@ -91,9 +91,9 @@ namespace RssProjekt
             //Här ska vi köra en validering.....
 
             Validering valid = new Validering();
-            valid.CheckIfPod(urlToAdd, nameToAdd, kategoriToAdd, uppdateringToAdd
-                );  //Måste ändras då uppdatering och kategori ska tas in som int, här är de som text?
-            //Desutom så kommer varningen två gånger?
+           
+                //Måste ändras då uppdatering och kategori ska tas in som int, här är de som text?
+             
             if (valid.CheckIfPod(urlToAdd, nameToAdd, kategoriToAdd, uppdateringToAdd))
             {
                 Podcast podToAdd = new Podcast
