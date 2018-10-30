@@ -60,5 +60,29 @@ namespace RssProjekt
         {
 
         }
+
+        private void btnLaggTillPod_Click(object sender, EventArgs e)
+        {
+            var urlToAdd = tbUrl.Text.Trim();
+            var nameToAdd = tbName.Text.Trim();
+            var kategoriToAdd = cbCategory.Text;
+            var uppdateringToAdd = cbUpdate.Text;
+            //Här ska vi köra en validering.....
+
+            Podcast podToAdd = new Podcast
+            {
+                Namn = nameToAdd,
+                RssUrl = urlToAdd,
+                Kategori = kategoriToAdd,
+                Uppdatering = uppdateringToAdd
+            };
+
+            tbName.Clear();
+            tbUrl.Clear();
+            cbCategory.SelectedIndex = -1;
+            cbUpdate.SelectedIndex = -1;
+            Podcasts.Add(podToAdd);
+            UpdatePodList(); 
+        }
     }
 }

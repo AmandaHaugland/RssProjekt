@@ -20,8 +20,7 @@ namespace RssProjekt.BLL
         }
         public int MakeId()
         {
-     //       int newID = Podcasts.Count + 1;
-     //       return newID;
+            //Metoden ska kolla ta emot antalet ´poddar och jobba utifrån det...
      return 0;
        }
 
