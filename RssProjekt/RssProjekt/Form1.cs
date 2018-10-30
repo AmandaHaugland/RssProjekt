@@ -31,10 +31,13 @@ namespace RssProjekt
             {
                 new Podcast
                 {
+                    PodId = 0,
                     Namn = "Namnet",
                     Kategori ="Kat",
+                    Avsnitt = 8,
                     RssUrl ="www.hmmm",
                     Uppdatering = "1 min"
+                    
 
                 }
             };

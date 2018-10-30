@@ -13,10 +13,14 @@ namespace RssProjekt.BLL
         public string Namn { get; set; }
         public string Kategori { get; set; }
         public string Uppdatering { get; set; }
+        public int PodId { get; set; }
+        public int Avsnitt { get; set; }
+
+        //Ska ha metod för att sätta antal avsnitt
 
         public List<string> MakeLVItem()
         {
-            return new List<string> { RssUrl, Namn, Kategori, Uppdatering };
+            return new List<string> { RssUrl, Namn, Avsnitt.ToString(), Kategori, Uppdatering };
         }
         public int MakeId()
         {

@@ -60,9 +60,9 @@
             this.lvPodcast.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
+            this.columnHeader3,
             this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader3});
+            this.columnHeader5});
             this.lvPodcast.Location = new System.Drawing.Point(15, 12);
             this.lvPodcast.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lvPodcast.Name = "lvPodcast";
