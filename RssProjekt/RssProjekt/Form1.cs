@@ -26,6 +26,7 @@ namespace RssProjekt
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
             //Här kommer vi köra en metod som sätter Podcasts till det som finns i xml filen
             Podcasts = new List<Podcast>
             {
@@ -71,8 +72,8 @@ namespace RssProjekt
             var kategoriToAdd = cbCategory.Text;
             var uppdateringToAdd = cbUpdate.Text;
             //Här ska vi köra en validering.....
-
-            Podcast podToAdd = new Podcast
+            
+           Podcast podToAdd = new Podcast
             {
                 Namn = nameToAdd,
                 RssUrl = urlToAdd,
