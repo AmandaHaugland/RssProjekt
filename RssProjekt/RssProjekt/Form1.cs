@@ -89,15 +89,16 @@ namespace RssProjekt
             var kategoriToAdd = cbCategory.Text;
             var uppdateringToAdd = cbUpdate.Text;
 
-            int indexUppdatering = cbUpdate.SelectedIndex;
             
+            int indexUppdatering = cbUpdate.SelectedIndex;
+            int indexKategori = cbCategory.SelectedIndex;
             //Här ska vi köra en validering.....
 
             Validering valid = new Validering();
-           // valid.CheckIfPod(urlToAdd, nameToAdd, kategoriToAdd, uppdateringToAdd
-             //   );  //Måste ändras då uppdatering och kategori ska tas in som int, här är de som text?
-            //Desutom så kommer varningen två gånger?
-            if (valid.CheckIfPod(urlToAdd, nameToAdd, kategoriToAdd, indexUppdatering))
+           
+                //Måste ändras då uppdatering och kategori ska tas in som int, här är de som text?
+             
+            if (valid.CheckIfPod(urlToAdd, nameToAdd, indexKategori, indexUppdatering))
             {
                 Podcast podToAdd = new Podcast
                 {

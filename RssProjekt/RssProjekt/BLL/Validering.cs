@@ -14,7 +14,7 @@ namespace RssProjekt.BLL
 
             if (string.IsNullOrEmpty(url) ||
                 string.IsNullOrEmpty(namn) ||
-                kategori <= -1 ||
+                kategori<= -1 ||
                 uppdatering <= -1
                 )
             {
