@@ -88,13 +88,17 @@ namespace RssProjekt
             var nameToAdd = tbName.Text.Trim();
             var kategoriToAdd = cbCategory.Text;
             var uppdateringToAdd = cbUpdate.Text;
+
+            
+            int indexUppdatering = cbUpdate.SelectedIndex;
+            int indexKategori = cbCategory.SelectedIndex;
             //Här ska vi köra en validering.....
 
             Validering valid = new Validering();
            
                 //Måste ändras då uppdatering och kategori ska tas in som int, här är de som text?
              
-            if (valid.CheckIfPod(urlToAdd, nameToAdd, kategoriToAdd, uppdateringToAdd))
+            if (valid.CheckIfPod(urlToAdd, nameToAdd, indexKategori, indexUppdatering))
             {
                 Podcast podToAdd = new Podcast
                 {
