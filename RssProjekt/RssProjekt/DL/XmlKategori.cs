@@ -12,6 +12,7 @@ namespace RssProjekt.DL
     class XmlKategori
     {
         
+
         public void AddKategoriToXml (string katNamn)
         {
 

@@ -103,7 +103,7 @@ namespace RssProjekt
 
             Validering valid = new Validering();
            
-                //Måste ändras då uppdatering och kategori ska tas in som int, här är de som text?
+                
              
             if (valid.CheckIfPod(urlToAdd, nameToAdd, indexKategori, indexUppdatering))
             {
