@@ -44,7 +44,7 @@
             this.cbUpdate = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbKategori = new System.Windows.Forms.TextBox();
             this.läggTillKategorie = new System.Windows.Forms.Button();
             this.ändraKtegori = new System.Windows.Forms.Button();
             this.taBortKategorie = new System.Windows.Forms.Button();
@@ -193,13 +193,13 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Kategorier";
             // 
-            // textBox1
+            // tbKategori
             // 
-            this.textBox1.Location = new System.Drawing.Point(765, 272);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(379, 22);
-            this.textBox1.TabIndex = 12;
+            this.tbKategori.Location = new System.Drawing.Point(765, 272);
+            this.tbKategori.Margin = new System.Windows.Forms.Padding(4);
+            this.tbKategori.Name = "tbKategori";
+            this.tbKategori.Size = new System.Drawing.Size(379, 22);
+            this.tbKategori.TabIndex = 12;
             // 
             // läggTillKategorie
             // 
@@ -279,6 +279,7 @@
             this.lvCategory.Size = new System.Drawing.Size(320, 190);
             this.lvCategory.TabIndex = 20;
             this.lvCategory.UseCompatibleStateImageBehavior = false;
+            this.lvCategory.View = System.Windows.Forms.View.List;
             // 
             // Form1
             // 
@@ -293,7 +294,7 @@
             this.Controls.Add(this.taBortKategorie);
             this.Controls.Add(this.ändraKtegori);
             this.Controls.Add(this.läggTillKategorie);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbKategori);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbUpdate);
@@ -330,7 +331,7 @@
         private System.Windows.Forms.ComboBox cbUpdate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbKategori;
         private System.Windows.Forms.Button läggTillKategorie;
         private System.Windows.Forms.Button ändraKtegori;
         private System.Windows.Forms.Button taBortKategorie;

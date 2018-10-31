@@ -78,7 +78,10 @@ namespace RssProjekt
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            //Lägg till validering
+            KategoriLista.Add(tbKategori.Text.Trim());
+            UpdateKatLists();
+            tbKategori.Clear(); 
         }
 
         private void tbUrl_TextChanged(object sender, EventArgs e)
