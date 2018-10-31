@@ -1,4 +1,5 @@
 ﻿using RssProjekt.BLL;
+using RssProjekt.DL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ namespace RssProjekt
         private List<Podcast> Podcasts { get; set; }
         static Kategorier kategorier = new Kategorier();
         List<string> KategoriLista = kategorier.ReturnList();
+        static XmlKategori xmlKategori = new XmlKategori();
 
         public Form1()
         {
@@ -31,6 +33,7 @@ namespace RssProjekt
         {
             
             KategoriLista.Add("Hej");
+            xmlKategori.CreateXml();
 
             //Här kommer vi köra en metod som sätter Podcasts till det som finns i xml filen
             Podcasts = new List<Podcast>
