@@ -52,6 +52,7 @@
             this.btnTaBortPod = new System.Windows.Forms.Button();
             this.lVFeed = new System.Windows.Forms.ListView();
             this.label5 = new System.Windows.Forms.Label();
+            this.lvCategory = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // lvPodcast
@@ -271,11 +272,20 @@
             this.label5.TabIndex = 19;
             this.label5.Text = "Feed";
             // 
+            // lvCategory
+            // 
+            this.lvCategory.Location = new System.Drawing.Point(765, 55);
+            this.lvCategory.Name = "lvCategory";
+            this.lvCategory.Size = new System.Drawing.Size(320, 190);
+            this.lvCategory.TabIndex = 20;
+            this.lvCategory.UseCompatibleStateImageBehavior = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1348, 594);
+            this.Controls.Add(this.lvCategory);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lVFeed);
             this.Controls.Add(this.btnTaBortPod);
@@ -330,6 +340,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ListView lvCategory;
     }
 }
 
