@@ -30,6 +30,18 @@ namespace RssProjekt.BLL
 
 
         }
+        public bool CheckIfKat(String kategoriNamn)
+        {
+            if (string.IsNullOrEmpty(kategoriNamn))
+            {
+                MessageBox.Show("Du måste fylla i fälten!");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
     }
 }
