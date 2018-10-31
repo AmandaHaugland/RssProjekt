@@ -9,13 +9,13 @@ namespace RssProjekt.BLL
 {
    public class Validering
     {
-        public bool CheckIfPod(String url, String namn, String kategori, String uppdatering)
+        public bool CheckIfPod(String url, String namn, int kategori, int uppdatering)
         {
 
             if (string.IsNullOrEmpty(url) ||
                 string.IsNullOrEmpty(namn) ||
-                kategori.Length <= -1 ||
-                uppdatering.Length <= -1
+                kategori <= -1 ||
+                uppdatering <= -1
                 )
             {
                 MessageBox.Show("Du måste fylla i fälten!");
