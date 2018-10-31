@@ -20,10 +20,10 @@ namespace RssProjekt.DL
            
             XmlWriter xmlOut = XmlWriter.Create(path);
             xmlOut.WriteStartDocument();
-            xmlOut.WriteStartElement("Podcasts");
-                xmlOut.WriteStartElement("Podcast");
-                     xmlOut.WriteElementString("PodName", "name of pod");
-                 xmlOut.WriteEndElement();
+            xmlOut.WriteStartElement("Kategorier");
+                //xmlOut.WriteStartElement("Podcast");
+                  //   xmlOut.WriteElementString("PodName", "name of pod");
+                // xmlOut.WriteEndElement();
 
             xmlOut.WriteEndElement();
             xmlOut.WriteEndDocument();
@@ -34,10 +34,10 @@ namespace RssProjekt.DL
         public void AddKategoriToXml (string katNamn)
         {
             XDocument doc = XDocument.Load(path);
-            XElement root = new XElement("Kategori");
-            root.Add(new XAttribute("name", "name goes here"));
-            root.Add(new XElement("Kategorinamn", katNamn));
-            doc.Element("Podcasts").Add(root);
+            XElement root = new XElement("Kategori", katNamn);
+           // root.Add(new XAttribute("name", "name goes here"));
+            //root.Add(new XElement("Kategorinamn", katNamn));
+            doc.Element("Kategorier").Add(root);
             doc.Save(path);
         }
     }

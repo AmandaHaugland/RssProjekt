@@ -32,9 +32,9 @@ namespace RssProjekt
         private void Form1_Load(object sender, EventArgs e)
         {
             
-            KategoriLista.Add("Hej");
+           // KategoriLista.Add("Hej");
             xmlKategori.CreateXml();
-            xmlKategori.AddKategoriToXml("Kategoritestet");
+           // xmlKategori.AddKategoriToXml("Kategoritestet");
 
             //Här kommer vi köra en metod som sätter Podcasts till det som finns i xml filen
             Podcasts = new List<Podcast>
@@ -83,7 +83,9 @@ namespace RssProjekt
         private void button2_Click(object sender, EventArgs e)
         {
             //Lägg till validering
-            KategoriLista.Add(tbKategori.Text.Trim());
+            kategorier.AddKatToList(tbKategori.Text.Trim());
+
+            //KategoriLista.Add(tbKategori.Text.Trim());
             UpdateKatLists();
             tbKategori.Clear(); 
         }
