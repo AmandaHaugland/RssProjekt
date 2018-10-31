@@ -64,13 +64,17 @@ namespace RssProjekt
         public void UpdateKatLists()
         {
             lvCategory.Items.Clear();
-            
-            
-            foreach(var kat in KategoriLista)
+            cbCategory.Items.Clear();
+
+
+            foreach (var kat in KategoriLista)
             {
-                lvCategory.Items.Add(kat); 
+                lvCategory.Items.Add(kat);
+                cbCategory.Items.Add(kat);
             }
         }
+
+        
 
         private void button2_Click(object sender, EventArgs e)
         {
