@@ -82,12 +82,18 @@ namespace RssProjekt
 
         private void button2_Click(object sender, EventArgs e)
         {
+            var addKategori = tbKategori.Text.Trim();
+            Validering katNamn = new Validering();
             //Lägg till validering
-            kategorier.AddKatToList(tbKategori.Text.Trim());
+            if (katNamn.CheckIfKat(addKategori))
+            {
+                kategorier.AddKatToList(tbKategori.Text.Trim());
 
-            //KategoriLista.Add(tbKategori.Text.Trim());
-            UpdateKatLists();
-            tbKategori.Clear(); 
+                //KategoriLista.Add(tbKategori.Text.Trim());
+                UpdateKatLists();
+                tbKategori.Clear();
+            }
+          
         }
 
         private void tbUrl_TextChanged(object sender, EventArgs e)
