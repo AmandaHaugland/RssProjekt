@@ -5,31 +5,40 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.IO;
-
-
+using System.Xml.Linq;
 
 namespace RssProjekt.DL
 {
 
     class XmlKategori
     {
-         public void CreateXml()
+        XmlDocument doc = new XmlDocument();
+        string path = @"../XMLKategori.xml";
+        public void CreateXml()
         {
-            XmlDocument doc = new XmlDocument();
-            string path = @"XMLKategori.xml";
+            //XmlDocument doc = new XmlDocument();
+           
             XmlWriter xmlOut = XmlWriter.Create(path);
             xmlOut.WriteStartDocument();
-            xmlOut.WriteStartElement("Product");
-            xmlOut.WriteString("Test");
+            xmlOut.WriteStartElement("Podcasts");
+                xmlOut.WriteStartElement("Podcast");
+                     xmlOut.WriteElementString("PodName", "name of pod");
+                 xmlOut.WriteEndElement();
+
             xmlOut.WriteEndElement();
             xmlOut.WriteEndDocument();
 
-            xmlOut.Flush();
+           
             xmlOut.Close();
         }
         public void AddKategoriToXml (string katNamn)
         {
-
+            XDocument doc = XDocument.Load(path);
+            XElement root = new XElement("Kategori");
+            root.Add(new XAttribute("name", "name goes here"));
+            root.Add(new XElement("Kategorinamn", katNamn));
+            doc.Element("Podcasts").Add(root);
+            doc.Save(path);
         }
     }
 }

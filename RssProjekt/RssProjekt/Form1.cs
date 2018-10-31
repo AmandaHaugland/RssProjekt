@@ -34,6 +34,7 @@ namespace RssProjekt
             
             KategoriLista.Add("Hej");
             xmlKategori.CreateXml();
+            xmlKategori.AddKategoriToXml("Kategoritestet");
 
             //Här kommer vi köra en metod som sätter Podcasts till det som finns i xml filen
             Podcasts = new List<Podcast>
