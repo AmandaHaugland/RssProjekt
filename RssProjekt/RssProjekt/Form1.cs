@@ -85,7 +85,7 @@ namespace RssProjekt
             var addKategori = tbKategori.Text.Trim();
             Validering katNamn = new Validering();
             //Lägg till validering
-            if (katNamn.CheckIfKat(addKategori))
+            if (katNamn.CheckIf(addKategori))
             {
                 kategorier.AddKatToList(tbKategori.Text.Trim());
 
@@ -117,7 +117,7 @@ namespace RssProjekt
            
                 
              
-            if (valid.CheckIfPod(urlToAdd, nameToAdd, indexKategori, indexUppdatering))
+            if (valid.CheckIf(urlToAdd, nameToAdd, indexKategori, indexUppdatering))
             {
                 Podcast podToAdd = new Podcast
                 {

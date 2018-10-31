@@ -9,7 +9,7 @@ namespace RssProjekt.BLL
 {
    public class Validering
     {
-        public bool CheckIfPod(String url, String namn, int kategori, int uppdatering)
+        public bool CheckIf(String url, String namn, int kategori, int uppdatering)
         {
 
             if (string.IsNullOrEmpty(url) ||
@@ -30,7 +30,7 @@ namespace RssProjekt.BLL
 
 
         }
-        public bool CheckIfKat(String kategoriNamn)
+        public bool CheckIf(String kategoriNamn)
         {
             if (string.IsNullOrEmpty(kategoriNamn))
             {
