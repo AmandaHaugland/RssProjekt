@@ -20,9 +20,11 @@ namespace RssProjekt.DL
             XmlWriter xmlOut = XmlWriter.Create(path);
             xmlOut.WriteStartDocument();
             xmlOut.WriteStartElement("Product");
-            xmlOut.WriteElementString("Test", "test");
+            xmlOut.WriteString("Test");
             xmlOut.WriteEndElement();
-           
+            xmlOut.WriteEndDocument();
+
+            xmlOut.Flush();
             xmlOut.Close();
         }
         public void AddKategoriToXml (string katNamn)
