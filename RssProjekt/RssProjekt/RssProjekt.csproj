@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,11 +50,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\Feed.cs" />
     <Compile Include="BLL\ILists.cs" />
     <Compile Include="BLL\Kategori.cs" />
     <Compile Include="BLL\Kategorier.cs" />
     <Compile Include="BLL\Podcast.cs" />
     <Compile Include="BLL\Validering.cs" />
+    <Compile Include="DL\XmlFeed.cs" />
     <Compile Include="DL\XmlKategori.cs" />
     <Compile Include="DL\XmlPod.cs" />
     <Compile Include="Form1.cs">
