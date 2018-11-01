@@ -5,12 +5,24 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 
 namespace RssProjekt.DL
 {
     class XmlPod
     {
+        public void ifItExists()
+        {
+            if (!File.Exists("..\\xmlpodcasttest.xml"))
+            {
+                FileStream fs = new FileStream("..\\xmlpodcasttest.xml", FileMode.CreateNew, FileAccess.ReadWrite);
+            }
+            else
+            {
+                MessageBox.Show("It exists");
+            }
+        }
         public void addPodToXml(List<Podcast> listOfPodcasts)
         {
             using (Stream fs = new FileStream("..\\xmlpodcasttest.xml",
