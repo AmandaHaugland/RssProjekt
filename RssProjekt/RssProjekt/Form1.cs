@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,7 +34,7 @@ namespace RssProjekt
         {
             
            // KategoriLista.Add("Hej");
-            xmlKategori.CreateXml();
+            
            // xmlKategori.AddKategoriToXml("Kategoritestet");
 
             //Här kommer vi köra en metod som sätter Podcasts till det som finns i xml filen
@@ -70,11 +71,15 @@ namespace RssProjekt
             lvCategory.Items.Clear();
             cbCategory.Items.Clear();
 
-
-            foreach (var kat in KategoriLista)
+            string[] kategoriListan = Directory.GetDirectories(Directory.GetCurrentDirectory());
+            
+            foreach (var kat in kategoriListan)
             {
-                lvCategory.Items.Add(kat);
-                cbCategory.Items.Add(kat);
+                string[] trimKat = kat.Split('\\');
+                int langd = trimKat.Length - 1;
+                
+                lvCategory.Items.Add(trimKat[langd]);
+                cbCategory.Items.Add(trimKat[langd]);
             }
         }
 
