@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\ILists.cs" />
+    <Compile Include="BLL\Kategori.cs" />
     <Compile Include="BLL\Kategorier.cs" />
     <Compile Include="BLL\Podcast.cs" />
     <Compile Include="BLL\Validering.cs" />

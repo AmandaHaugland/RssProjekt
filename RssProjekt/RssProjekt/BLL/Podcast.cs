@@ -25,10 +25,19 @@ namespace RssProjekt.BLL
         {
             return new List<string> { RssUrl, Namn, Avsnitt.ToString(), Kategori, Uppdatering };
         }
-        public int MakeId()
+        public int MakeId(List<Podcast> podList)
         {
-            //Metoden ska kolla ta emot antalet ´poddar och jobba utifrån det...
-     return 0;
+            int lengthOfPodList = podList.Count;
+            if (lengthOfPodList > 0) 
+            {
+                var lastInList = podList[lengthOfPodList - 1];
+                return lastInList.PodId + 1;
+            }
+            else
+            {
+                return 0;
+            }
+     
        }
 
 

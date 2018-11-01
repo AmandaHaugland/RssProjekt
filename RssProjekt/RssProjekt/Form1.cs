@@ -16,6 +16,8 @@ namespace RssProjekt
     public partial class Form1 : Form
     {
         private List<Podcast> Podcasts { get; set; }
+        static Podcast podcastIn = new Podcast();
+
         static Kategorier kategorier = new Kategorier();
         List<string> KategoriLista = kategorier.ReturnList();
         static XmlKategori xmlKategori = new XmlKategori();
@@ -36,25 +38,7 @@ namespace RssProjekt
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            // KategoriLista.Add("Hej");
-
-            // xmlKategori.AddKategoriToXml("Kategoritestet");
-            
-            //Här kommer vi köra en metod som sätter Podcasts till det som finns i xml filen
-          // Podcasts = new List<Podcast>
-          // {
-          //     new Podcast
-          //     {
-          //         PodId = 0,
-          //         Namn = "Namnet",
-          //         Kategori ="Kat",
-          //         Avsnitt = 8,
-          //         RssUrl ="www.hmmm",
-          //         Uppdatering = "1 min"
-          //         
-          //
-          //     }
-          // };
+ 
             Podcasts = xmlPodcast.loadSavedPods(Podcasts);
             UpdatePodList();
             UpdateKatLists();
@@ -138,7 +122,8 @@ namespace RssProjekt
                     Namn = nameToAdd,
                     RssUrl = urlToAdd,
                     Kategori = kategoriToAdd,
-                    Uppdatering = uppdateringToAdd
+                    Uppdatering = uppdateringToAdd,
+                    PodId = podcastIn.MakeId(Podcasts)
                 };
 
 
