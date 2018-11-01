@@ -10,22 +10,35 @@ using System.Xml.Serialization;
 
 namespace RssProjekt.DL
 {
+
+    //"..\\xmlpodcasttest.xml"
     class XmlPod
     {
-        public void ifItExists()
+        //string path = "testaXml.xml";
+        string path = "..\\xmlpodcasttest.xml";
+        public void ifItExists(List<Podcast> listOfPodcasts)
         {
-            if (!File.Exists("..\\xmlpodcasttest.xml"))
+            
+            if (!File.Exists(path))
             {
-                FileStream fs = new FileStream("..\\xmlpodcasttest.xml", FileMode.CreateNew, FileAccess.ReadWrite);
+                //FileStream fs = new FileStream("..\\xmlpodcasttest.xml", FileMode.CreateNew, FileAccess.ReadWrite);
+                using (Stream fs = new FileStream(path,
+               FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<Podcast>));
+                    serializer.Serialize(fs, listOfPodcasts);
+
+                }
             }
             else
             {
                 MessageBox.Show("It exists");
             }
         }
+
         public void addPodToXml(List<Podcast> listOfPodcasts)
         {
-            using (Stream fs = new FileStream("..\\xmlpodcasttest.xml",
+            using (Stream fs = new FileStream(path,
                 FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Podcast>));
@@ -38,7 +51,7 @@ namespace RssProjekt.DL
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<Podcast>));
 
-            using (FileStream fs = File.OpenRead("..\\xmlpodcasttest.xml"))
+            using (FileStream fs = File.OpenRead(path))
             {
                 listOfPodcasts = (List<Podcast>)serializer.Deserialize(fs);
             }

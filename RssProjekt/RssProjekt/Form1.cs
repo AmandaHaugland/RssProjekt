@@ -38,7 +38,7 @@ namespace RssProjekt
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            xmlPodcast.ifItExists();
+            xmlPodcast.ifItExists(Podcasts);
             Podcasts = xmlPodcast.loadSavedPods(Podcasts);
             UpdatePodList();
             UpdateKatLists();
