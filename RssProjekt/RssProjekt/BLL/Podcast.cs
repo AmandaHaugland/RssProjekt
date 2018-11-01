@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace RssProjekt.BLL
 {
     [Serializable()]
-    class Podcast: ISerializable 
+   public class Podcast: ISerializable 
     {
         public string RssUrl { get; set; }
         public string Namn { get; set; }

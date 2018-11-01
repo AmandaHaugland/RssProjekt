@@ -20,7 +20,7 @@ namespace RssProjekt
         List<string> KategoriLista = kategorier.ReturnList();
         static XmlKategori xmlKategori = new XmlKategori();
 
-        static XmlPodcast xmlPodcast = new XmlPodcast();
+        static XmlPod xmlPodcast = new XmlPod();
 
 
         public Form1()
@@ -62,6 +62,11 @@ namespace RssProjekt
         public void UpdatePodList()
         {
             lvPodcast.Items.Clear();
+           // Podcasts = new List<Podcast>();
+            xmlPodcast.addPodToXml(Podcasts);
+            xmlPodcast.loadSavedPods(Podcasts);
+
+
             
             foreach(var pod in Podcasts)
             {
