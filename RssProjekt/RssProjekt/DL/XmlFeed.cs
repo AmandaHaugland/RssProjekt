@@ -11,6 +11,7 @@ namespace RssProjekt.DL
 {
     class XmlFeed
     {
+        //använd denna genom att sätta lista = metoden. Namnsätt lista efter podID, så blir pod kopplat till feed
         public List<Feed> makeFeed(string rssUrl)
         {
             List<Feed> listOfFeed = new List<Feed>();
