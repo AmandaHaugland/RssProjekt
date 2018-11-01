@@ -22,7 +22,7 @@ namespace RssProjekt.DL
             }
         }
 
-        public void loadSavedPods(List<Podcast> listOfPodcasts)
+        public List<Podcast> loadSavedPods(List<Podcast> listOfPodcasts)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<Podcast>));
 
@@ -30,6 +30,7 @@ namespace RssProjekt.DL
             {
                 listOfPodcasts = (List<Podcast>)serializer.Deserialize(fs);
             }
+            return listOfPodcasts;
         }
     }
 }

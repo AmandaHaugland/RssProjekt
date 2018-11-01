@@ -35,26 +35,27 @@ namespace RssProjekt
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
-           // KategoriLista.Add("Hej");
-            
-           // xmlKategori.AddKategoriToXml("Kategoritestet");
 
+            // KategoriLista.Add("Hej");
+
+            // xmlKategori.AddKategoriToXml("Kategoritestet");
+            
             //Här kommer vi köra en metod som sätter Podcasts till det som finns i xml filen
-            Podcasts = new List<Podcast>
-            {
-                new Podcast
-                {
-                    PodId = 0,
-                    Namn = "Namnet",
-                    Kategori ="Kat",
-                    Avsnitt = 8,
-                    RssUrl ="www.hmmm",
-                    Uppdatering = "1 min"
-                    
-
-                }
-            };
+          // Podcasts = new List<Podcast>
+          // {
+          //     new Podcast
+          //     {
+          //         PodId = 0,
+          //         Namn = "Namnet",
+          //         Kategori ="Kat",
+          //         Avsnitt = 8,
+          //         RssUrl ="www.hmmm",
+          //         Uppdatering = "1 min"
+          //         
+          //
+          //     }
+          // };
+            Podcasts = xmlPodcast.loadSavedPods(Podcasts);
             UpdatePodList();
             UpdateKatLists();
         }
@@ -63,12 +64,11 @@ namespace RssProjekt
         {
             lvPodcast.Items.Clear();
            // Podcasts = new List<Podcast>();
-            xmlPodcast.addPodToXml(Podcasts);
-            xmlPodcast.loadSavedPods(Podcasts);
+            Podcasts = xmlPodcast.loadSavedPods(Podcasts);
 
 
-            
-            foreach(var pod in Podcasts)
+
+            foreach (var pod in Podcasts)
             {
                 lvPodcast.Items.Add(
                     pod.MakeListView());
@@ -150,6 +150,7 @@ namespace RssProjekt
                 cbCategory.SelectedIndex = -1;
                 cbUpdate.SelectedIndex = -1;
                 Podcasts.Add(podToAdd);
+                xmlPodcast.addPodToXml(Podcasts);
                 UpdatePodList();
             }
         }
