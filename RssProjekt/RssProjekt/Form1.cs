@@ -52,7 +52,7 @@ namespace RssProjekt
             lvPodcast.Items.Clear();
            // Podcasts = new List<Podcast>();
             Podcasts = xmlPodcast.loadSavedPods(Podcasts);
-
+            xmlFeed.addMappForFeed("TestMapp");
 
 
             foreach (var pod in Podcasts)
@@ -143,11 +143,15 @@ namespace RssProjekt
                 Podcasts.Add(podToAdd);
                 xmlPodcast.addPodToXml(Podcasts);
 
-                //Lägger till Feeden i dictionary med podid som nyckel
-                List<Feed> feedListToAdd = new List<Feed>();
-                feedListToAdd = xmlFeed.makeFeed(urlToAdd);
-                FeedDictionary[idToAdd.ToString()] = feedListToAdd;
+                List<Feed> feedToAdd = xmlFeed.makeFeed(urlToAdd);
+                xmlFeed.addMappForFeed(idToAdd.ToString());
+                xmlFeed.AddFeedToXml(feedToAdd, idToAdd.ToString());
 
+                //Lägger till Feeden i dictionary med podid som nyckel
+               // List<Feed> feedListToAdd = new List<Feed>();
+               // feedListToAdd = xmlFeed.makeFeed(urlToAdd);
+               // FeedDictionary[idToAdd.ToString()] = feedListToAdd;
+               
                 UpdatePodList();
             }
         }

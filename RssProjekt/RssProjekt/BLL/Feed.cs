@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace RssProjekt.BLL
 {
     [Serializable()]
-    class Feed : ISerializable
+    public class Feed : ISerializable
     {
         public string Title { get; set; }
         public string Description { get; set; }
