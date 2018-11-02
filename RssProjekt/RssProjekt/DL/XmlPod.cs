@@ -15,6 +15,7 @@ namespace RssProjekt.DL
     class XmlPod
     {
         //string path = "testaXml.xml";
+        //Ändra så att path stämmer
         string path = "..\\xmlpodcasttest.xml";
         public void ifItExists(List<Podcast> listOfPodcasts)
         {

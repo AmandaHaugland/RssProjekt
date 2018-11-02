@@ -16,13 +16,16 @@ namespace RssProjekt
     public partial class Form1 : Form
     {
         private List<Podcast> Podcasts { get; set; }
+        Dictionary<string, List<Feed>> FeedDictionary = new Dictionary<string, List<Feed>>();
         static Podcast podcastIn = new Podcast();
 
         static Kategorier kategorier = new Kategorier();
         List<string> KategoriLista = kategorier.ReturnList();
         static XmlKategori xmlKategori = new XmlKategori();
 
+        static Feed feed = new Feed();
         static XmlPod xmlPodcast = new XmlPod();
+        static XmlFeed xmlFeed = new XmlFeed();
 
 
         public Form1()
@@ -57,6 +60,8 @@ namespace RssProjekt
                 lvPodcast.Items.Add(
                     pod.MakeListView());
             }
+
+
            }
 
         public void UpdateKatLists()
@@ -117,13 +122,14 @@ namespace RssProjekt
              
             if (valid.CheckIf(urlToAdd, nameToAdd, indexKategori, indexUppdatering))
             {
+                var idToAdd = podcastIn.MakeId(Podcasts);
                 Podcast podToAdd = new Podcast
                 {
                     Namn = nameToAdd,
                     RssUrl = urlToAdd,
                     Kategori = kategoriToAdd,
                     Uppdatering = uppdateringToAdd,
-                    PodId = podcastIn.MakeId(Podcasts)
+                    PodId = idToAdd
                 };
 
 
@@ -136,8 +142,21 @@ namespace RssProjekt
                 cbUpdate.SelectedIndex = -1;
                 Podcasts.Add(podToAdd);
                 xmlPodcast.addPodToXml(Podcasts);
+
+                //Lägger till Feeden i dictionary med podid som nyckel
+                List<Feed> feedListToAdd = new List<Feed>();
+                feedListToAdd = xmlFeed.makeFeed(urlToAdd);
+                FeedDictionary[idToAdd.ToString()] = feedListToAdd;
+
                 UpdatePodList();
             }
+        }
+
+        private void btnTestFeed_Click(object sender, EventArgs e)
+        {
+            List<Feed> testFeedList = new List<Feed>();
+            testFeedList = xmlFeed.makeFeed(@"http://lorepodcast.libsyn.com/rss");
+            MessageBox.Show(testFeedList.Count + testFeedList[1].Title + " Beskrivning " + testFeedList[1].Description);
         }
     }
 }

@@ -22,9 +22,13 @@ namespace RssProjekt.DL
                 Feed feed = new Feed();
                 feed.Title = item.Title.Text;
                 feed.Description = item.Summary.Text;
+                //feed.PodId = podId;
                 listOfFeed.Add(feed);
             }
             return listOfFeed;
         }
+
+        //Låt path bero på vad man skickar in
+
     }
 }
