@@ -23,6 +23,11 @@ namespace RssProjekt.BLL
                 //Lägg till felmeddelande??
                 
             }
+            else if (!url.Contains(@"^(http|https|ftp|)\://|[a-zA-Z0-9\-\.]+\.[a-zA-Z](:[a-zA-Z0-9]*)?/?([a-zA-Z0-9\-\._\?\,\'/\\\+&amp;%\$#\=~])*[^\.\,\)\(\s]$"))
+            {
+                MessageBox.Show("Url är fel, försöka igen");
+                return false;
+            }
             else
             {
                 return true;
@@ -42,6 +47,8 @@ namespace RssProjekt.BLL
                 return true;
             }
         }
+       
+        
 
     }
 }
