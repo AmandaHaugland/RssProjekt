@@ -26,7 +26,7 @@ namespace RssProjekt.BLL
                 
             }
 
-             else if (url.Equals(rx))
+             else if (!url.Equals(rx))
             {
                 MessageBox.Show("Url är fel, försöka igen");
                 return false;
