@@ -5,32 +5,45 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
+
 
 namespace RssProjekt.BLL
 {
    public class Validering
     {
+       
         public bool CheckIf(String url, String namn, int kategori, int uppdatering)
         {
-            Regex rx = new Regex(@"/^(https?:\/\/)[a-zA-Z0-9]+\.[a-zA-Z0-9]+\.[a-zA-Z0-9]+\/[a-zA-Z0-9]+/");
+            //string Url = url;
+           // Regex rx = new Regex(@"/^(https?:\/\/)[a-zA-Z0-9]+\.[a-zA-Z0-9]+\.[a-zA-Z0-9]+\/[a-zA-Z0-9]+/");
+           // bool b = Url.Contains((@"/^(https?:\/\/)[a-zA-Z0-9]+\.[a-zA-Z0-9]+\.[a-zA-Z0-9]+\/[a-zA-Z0-9]+/"));
 
             if (string.IsNullOrEmpty(url) ||
                 string.IsNullOrEmpty(namn) ||
-                kategori<= -1 ||
+                kategori <= -1 ||
                 uppdatering <= -1
                )
-           {
+            {
                 MessageBox.Show("Du måste fylla i fälten!");
                 return false;
                 //Lägg till felmeddelande??
-                
+
             }
 
-             else if (!url.Equals(rx))
+            Uri uri = null;
+            if (!Uri.TryCreate(url, UriKind.Absolute, out uri) || null == uri)
             {
-                MessageBox.Show("Url är fel, försöka igen");
+                MessageBox.Show("fel url, försöka igen!");
                 return false;
             }
+
+            // else if ("")
+
+            // {
+            //   MessageBox.Show("Url är fel, försöka igen");
+            //   return false;
+            // }
             else
             {
             
@@ -52,8 +65,8 @@ namespace RssProjekt.BLL
                 return true;
             }
         }
-       
         
+       
 
     }
 }

@@ -122,6 +122,8 @@ namespace RssProjekt
              
             if (valid.CheckIf(urlToAdd, nameToAdd, indexKategori, indexUppdatering))
             {
+               
+
                 var idToAdd = podcastIn.MakeId(Podcasts);
                 Podcast podToAdd = new Podcast
                 {
