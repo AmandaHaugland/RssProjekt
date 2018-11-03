@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -122,7 +123,8 @@ namespace RssProjekt
              
             if (valid.CheckIf(urlToAdd, nameToAdd, indexKategori, indexUppdatering))
             {
-               
+                AsyncMethod();
+                label6.Text = "Wating...";
 
                 var idToAdd = podcastIn.MakeId(Podcasts);
                 Podcast podToAdd = new Podcast
@@ -165,6 +167,20 @@ namespace RssProjekt
             List<Feed> testFeedList = new List<Feed>();
             testFeedList = xmlFeed.makeFeed(@"http://lorepodcast.libsyn.com/rss");
             MessageBox.Show(testFeedList.Count + testFeedList[1].Title + " Beskrivning " + testFeedList[1].Description);
+        }
+        public async void AsyncMethod()
+        {
+            var result = await TaskMethod("Dina uppgifter sparades");
+            label6.Text = result;
+        }
+        public Task<string> TaskMethod(string felMeddelande)
+        {
+            return Task.Factory.StartNew(() => AMethod(felMeddelande));
+        }
+        public string AMethod(string meddelande)
+        {
+            Thread.Sleep(1000);
+            return "Klart! " + meddelande;
         }
     }
 }
