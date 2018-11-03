@@ -28,7 +28,7 @@ namespace RssProjekt
         static Feed feed = new Feed();
         static XmlPod xmlPodcast = new XmlPod();
         static XmlFeed xmlFeed = new XmlFeed();
-
+      
 
         public Form1()
         {
@@ -196,20 +196,37 @@ namespace RssProjekt
             
         }
 
+      
         private void btnTaBortPod_Click(object sender, EventArgs e)
         {
+           
+
 
             if (TaBortPod())
             {
                 MessageBox.Show("Podcast tog bort");
+                try
+                {
+                    lvPodcast.Items.RemoveAt(lvPodcast.SelectedIndices[0]);
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    MessageBox.Show("Du måste klicka på url också!");
+                }
+
+
                 
-            }
+
+
+
+
+                }
             
 
         }
         public bool TaBortPod()
         {
-
+           
             Podcast podToDelete = new Podcast();
             XmlDocument doc = new XmlDocument();
             doc.Load("..\\xmlpodcasttest.xml");

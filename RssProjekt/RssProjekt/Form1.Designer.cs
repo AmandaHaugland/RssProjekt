@@ -55,6 +55,7 @@
             this.lvCategory = new System.Windows.Forms.ListView();
             this.btnTestFeed = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lvPodcast
@@ -300,11 +301,21 @@
             this.label6.TabIndex = 22;
             this.label6.Text = ".";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(16, 271);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "label7";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1011, 483);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnTestFeed);
             this.Controls.Add(this.lvCategory);
@@ -365,6 +376,7 @@
         private System.Windows.Forms.ListView lvCategory;
         private System.Windows.Forms.Button btnTestFeed;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 
