@@ -170,9 +170,10 @@ namespace RssProjekt
             testFeedList = xmlFeed.makeFeed(@"http://lorepodcast.libsyn.com/rss");
             MessageBox.Show(testFeedList.Count + testFeedList[1].Title + " Beskrivning " + testFeedList[1].Description);
         }
+
         public async void AsyncMethod()
         {
-            var result = await TaskMethod("Dina uppgifter sparades");
+            var result = await TaskMethod("Podcast lagt till!");
             label6.Text = result;
          var result2 = await Task.Factory.StartNew(() => ThreadMetod());
             label6.Text = result2;
