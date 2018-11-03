@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace RssProjekt
 {
@@ -193,6 +194,35 @@ namespace RssProjekt
             Thread.Sleep(2000);
             return "";
             
+        }
+
+        private void btnTaBortPod_Click(object sender, EventArgs e)
+        {
+
+            if (TaBortPod())
+            {
+                MessageBox.Show("Podcast tog bort");
+                
+            }
+            
+
+        }
+        public bool TaBortPod()
+        {
+
+            Podcast podToDelete = new Podcast();
+            XmlDocument doc = new XmlDocument();
+            doc.Load("..\\xmlpodcasttest.xml");
+            foreach (XmlNode xNode in doc.SelectNodes("ArrayOfPodcast/Podcast"))
+            {
+                if (xNode.SelectSingleNode("Namn").InnerText == tbName.Text) xNode.ParentNode.RemoveChild(xNode);
+                doc.Save("..\\xmlpodcasttest.xml");
+                
+
+
+            }
+            return true;
+
         }
     }
 }
