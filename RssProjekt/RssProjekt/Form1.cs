@@ -125,6 +125,8 @@ namespace RssProjekt
             {
                 AsyncMethod();
                 label6.Text = "Wating...";
+                
+
 
                 var idToAdd = podcastIn.MakeId(Podcasts);
                 Podcast podToAdd = new Podcast
@@ -172,15 +174,24 @@ namespace RssProjekt
         {
             var result = await TaskMethod("Dina uppgifter sparades");
             label6.Text = result;
+         var result2 = await Task.Factory.StartNew(() => ThreadMetod());
+            label6.Text = result2;
+
         }
-        public Task<string> TaskMethod(string felMeddelande)
+        public Task<string> TaskMethod(string meddelande)
         {
-            return Task.Factory.StartNew(() => AMethod(felMeddelande));
+            return Task.Factory.StartNew(() => AMethod(meddelande));
         }
         public string AMethod(string meddelande)
         {
             Thread.Sleep(1000);
             return "Klart! " + meddelande;
+        }
+        public string ThreadMetod()
+        {
+            Thread.Sleep(2000);
+            return "";
+            
         }
     }
 }
