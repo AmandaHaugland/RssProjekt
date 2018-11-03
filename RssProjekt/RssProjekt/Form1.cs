@@ -148,9 +148,11 @@ namespace RssProjekt
                 xmlFeed.AddFeedToXml(feedToAdd, idToAdd.ToString());
 
                 //Lägger till Feeden i dictionary med podid som nyckel
-               // List<Feed> feedListToAdd = new List<Feed>();
-               // feedListToAdd = xmlFeed.makeFeed(urlToAdd);
-               // FeedDictionary[idToAdd.ToString()] = feedListToAdd;
+                // List<Feed> feedListToAdd = new List<Feed>();
+                // feedListToAdd = xmlFeed.makeFeed(urlToAdd);
+                // FeedDictionary[idToAdd.ToString()] = feedListToAdd;
+
+                FeedDictionary[idToAdd.ToString()] = feedToAdd;
                
                 UpdatePodList();
             }
