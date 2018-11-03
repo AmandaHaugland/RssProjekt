@@ -196,26 +196,29 @@ namespace RssProjekt
             
         }
 
-      
+
         private void btnTaBortPod_Click(object sender, EventArgs e)
         {
-           
-
+            var nameToRemove = tbName.Text.Trim();
+            Validering valid = new Validering();
+            if (valid.CheckIf(nameToRemove)) { 
 
             if (TaBortPod())
             {
-                MessageBox.Show("Podcast tog bort");
+                
                 try
                 {
                     lvPodcast.Items.RemoveAt(lvPodcast.SelectedIndices[0]);
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    MessageBox.Show("Du måste klicka på url också!");
+                    MessageBox.Show("Du måste klicka på url för att ta bort den från listan!");
                 }
 
-
+                   // MessageBox.Show("Podcast tog bort");
                 }
+                tbName.Clear();
+            }
             
 
         }
