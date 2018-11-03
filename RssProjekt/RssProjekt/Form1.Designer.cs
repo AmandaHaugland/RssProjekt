@@ -55,6 +55,7 @@
             this.lvCategory = new System.Windows.Forms.ListView();
             this.btnTestFeed = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lvPodcast
@@ -66,7 +67,7 @@
             this.columnHeader4,
             this.columnHeader5});
             this.lvPodcast.Location = new System.Drawing.Point(11, 10);
-            this.lvPodcast.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lvPodcast.Margin = new System.Windows.Forms.Padding(2);
             this.lvPodcast.Name = "lvPodcast";
             this.lvPodcast.Size = new System.Drawing.Size(519, 190);
             this.lvPodcast.TabIndex = 0;
@@ -123,7 +124,7 @@
             // tbName
             // 
             this.tbName.Location = new System.Drawing.Point(188, 220);
-            this.tbName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbName.Margin = new System.Windows.Forms.Padding(2);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(152, 20);
             this.tbName.TabIndex = 4;
@@ -133,7 +134,7 @@
             this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategory.FormattingEnabled = true;
             this.cbCategory.Location = new System.Drawing.Point(343, 220);
-            this.cbCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbCategory.Margin = new System.Windows.Forms.Padding(2);
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(92, 21);
             this.cbCategory.TabIndex = 5;
@@ -169,7 +170,7 @@
             "1 timme",
             "3 timmar"});
             this.cbUpdate.Location = new System.Drawing.Point(438, 220);
-            this.cbUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.cbUpdate.Name = "cbUpdate";
             this.cbUpdate.Size = new System.Drawing.Size(92, 21);
             this.cbUpdate.TabIndex = 8;
@@ -232,7 +233,7 @@
             // btnAndraPod
             // 
             this.btnAndraPod.Location = new System.Drawing.Point(95, 249);
-            this.btnAndraPod.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAndraPod.Margin = new System.Windows.Forms.Padding(2);
             this.btnAndraPod.Name = "btnAndraPod";
             this.btnAndraPod.Size = new System.Drawing.Size(56, 19);
             this.btnAndraPod.TabIndex = 16;
@@ -242,12 +243,13 @@
             // btnTaBortPod
             // 
             this.btnTaBortPod.Location = new System.Drawing.Point(156, 249);
-            this.btnTaBortPod.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTaBortPod.Margin = new System.Windows.Forms.Padding(2);
             this.btnTaBortPod.Name = "btnTaBortPod";
             this.btnTaBortPod.Size = new System.Drawing.Size(56, 19);
             this.btnTaBortPod.TabIndex = 17;
             this.btnTaBortPod.Text = "Ta bort";
             this.btnTaBortPod.UseVisualStyleBackColor = true;
+            this.btnTaBortPod.Click += new System.EventHandler(this.btnTaBortPod_Click);
             // 
             // lVFeed
             // 
@@ -270,7 +272,7 @@
             // lvCategory
             // 
             this.lvCategory.Location = new System.Drawing.Point(574, 45);
-            this.lvCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lvCategory.Margin = new System.Windows.Forms.Padding(2);
             this.lvCategory.Name = "lvCategory";
             this.lvCategory.Size = new System.Drawing.Size(241, 155);
             this.lvCategory.TabIndex = 20;
@@ -280,7 +282,7 @@
             // btnTestFeed
             // 
             this.btnTestFeed.Location = new System.Drawing.Point(311, 267);
-            this.btnTestFeed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTestFeed.Margin = new System.Windows.Forms.Padding(2);
             this.btnTestFeed.Name = "btnTestFeed";
             this.btnTestFeed.Size = new System.Drawing.Size(56, 28);
             this.btnTestFeed.TabIndex = 21;
@@ -299,11 +301,21 @@
             this.label6.TabIndex = 22;
             this.label6.Text = ".";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(16, 271);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "label7";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1011, 483);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnTestFeed);
             this.Controls.Add(this.lvCategory);
@@ -326,7 +338,7 @@
             this.Controls.Add(this.tbUrl);
             this.Controls.Add(this.btnLaggTillPod);
             this.Controls.Add(this.lvPodcast);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Podcast";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -364,6 +376,7 @@
         private System.Windows.Forms.ListView lvCategory;
         private System.Windows.Forms.Button btnTestFeed;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 

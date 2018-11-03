@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace RssProjekt
 {
@@ -27,7 +28,7 @@ namespace RssProjekt
         static Feed feed = new Feed();
         static XmlPod xmlPodcast = new XmlPod();
         static XmlFeed xmlFeed = new XmlFeed();
-
+      
 
         public Form1()
         {
@@ -193,6 +194,50 @@ namespace RssProjekt
             Thread.Sleep(2000);
             return "";
             
+        }
+
+
+        private void btnTaBortPod_Click(object sender, EventArgs e)
+        {
+            var nameToRemove = tbName.Text.Trim();
+            Validering valid = new Validering();
+            if (valid.CheckIf(nameToRemove)) { 
+
+            if (TaBortPod())
+            {
+                
+                try
+                {
+                    lvPodcast.Items.RemoveAt(lvPodcast.SelectedIndices[0]);
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    MessageBox.Show("Du måste klicka på url för att ta bort den från listan!");
+                }
+
+                   // MessageBox.Show("Podcast tog bort");
+                }
+                tbName.Clear();
+            }
+            
+
+        }
+        public bool TaBortPod()
+        {
+           
+            Podcast podToDelete = new Podcast();
+            XmlDocument doc = new XmlDocument();
+            doc.Load("..\\xmlpodcasttest.xml");
+            foreach (XmlNode xNode in doc.SelectNodes("ArrayOfPodcast/Podcast"))
+            {
+                if (xNode.SelectSingleNode("Namn").InnerText == tbName.Text) xNode.ParentNode.RemoveChild(xNode);
+                doc.Save("..\\xmlpodcasttest.xml");
+                
+
+
+            }
+            return true;
+
         }
     }
 }
