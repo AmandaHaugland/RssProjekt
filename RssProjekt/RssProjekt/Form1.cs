@@ -44,9 +44,14 @@ namespace RssProjekt
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            //Kolla om xml filer finns
             xmlPodcast.ifItExists(Podcasts);
+            xmlKategori.ifItExists(KategoriLista);
+
+            //Ladda in xmlfiler till listor
             Podcasts = xmlPodcast.loadSavedPods(Podcasts);
+            KategoriLista = xmlKategori.LoadSavedKats(KategoriLista);
+
             StartLookingForUppdates();
             UpdatePodList();
             UpdateKatLists();
@@ -75,15 +80,15 @@ namespace RssProjekt
             lvCategory.Items.Clear();
             cbCategory.Items.Clear();
 
-            string[] kategoriListan = Directory.GetDirectories(Directory.GetCurrentDirectory());
+            //string[] kategoriListan = Directory.GetDirectories(Directory.GetCurrentDirectory());
             
-            foreach (var kat in kategoriListan)
+            foreach (var kat in KategoriLista)
             {
-                string[] trimKat = kat.Split('\\');
-                int langd = trimKat.Length - 1;
+                //string[] trimKat = kat.Split('\\');
+                //int langd = trimKat.Length - 1;
                 
-                lvCategory.Items.Add(trimKat[langd]);
-                cbCategory.Items.Add(trimKat[langd]);
+                lvCategory.Items.Add(kat);
+                cbCategory.Items.Add(kat);
             }
         }
 
@@ -96,9 +101,10 @@ namespace RssProjekt
             //Lägg till validering
             if (katNamn.CheckIf(addKategori))
             {
-                kategorier.AddKatToList(tbKategori.Text.Trim());
+                //kategorier.AddKatToList(tbKategori.Text.Trim());
 
-                //KategoriLista.Add(tbKategori.Text.Trim());
+                KategoriLista.Add(tbKategori.Text.Trim());
+                xmlKategori.AddKategoriToXml(KategoriLista);
                 UpdateKatLists();
                 tbKategori.Clear();
             }
