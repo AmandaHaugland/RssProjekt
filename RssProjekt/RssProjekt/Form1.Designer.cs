@@ -55,11 +55,14 @@
             this.lvCategory = new System.Windows.Forms.ListView();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.PodId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lvPodcast
             // 
             this.lvPodcast.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.PodId,
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
@@ -72,6 +75,7 @@
             this.lvPodcast.TabIndex = 0;
             this.lvPodcast.UseCompatibleStateImageBehavior = false;
             this.lvPodcast.View = System.Windows.Forms.View.Details;
+            this.lvPodcast.SelectedIndexChanged += new System.EventHandler(this.lvPodcast_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -255,12 +259,15 @@
             // 
             // lVFeed
             // 
+            this.lVFeed.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Title});
             this.lVFeed.Location = new System.Drawing.Point(15, 386);
             this.lVFeed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lVFeed.Name = "lVFeed";
             this.lVFeed.Size = new System.Drawing.Size(501, 192);
             this.lVFeed.TabIndex = 18;
             this.lVFeed.UseCompatibleStateImageBehavior = false;
+            this.lVFeed.View = System.Windows.Forms.View.Details;
             // 
             // label5
             // 
@@ -305,6 +312,15 @@
             this.label7.Size = new System.Drawing.Size(46, 17);
             this.label7.TabIndex = 23;
             this.label7.Text = "label7";
+            // 
+            // PodId
+            // 
+            this.PodId.Text = "PodId";
+            // 
+            // Title
+            // 
+            this.Title.Text = "Title";
+            this.Title.Width = 160;
             // 
             // Form1
             // 
@@ -371,6 +387,8 @@
         private System.Windows.Forms.ListView lvCategory;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ColumnHeader PodId;
+        private System.Windows.Forms.ColumnHeader Title;
     }
 }
 

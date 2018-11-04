@@ -51,6 +51,7 @@ namespace RssProjekt
             //Ladda in xmlfiler till listor
             Podcasts = xmlPodcast.loadSavedPods(Podcasts);
             KategoriLista = xmlKategori.LoadSavedKats(KategoriLista);
+            UppdateDictionary();
 
             StartLookingForUppdates();
             UpdatePodList();
@@ -68,9 +69,11 @@ namespace RssProjekt
 
             foreach (var pod in Podcasts)
             {
-                lvPodcast.Items.Add(
-                    pod.MakeListView());
+                // lvPodcast.Items.Add(
+                //     pod.MakeListView());
+                lvPodcast.Items.Add(pod.MakeListView(pod.PodId.ToString(), pod.RssUrl, pod.Namn, pod.Avsnitt.ToString(), pod.Kategori, pod.Uppdatering));
             }
+
 
 
            }
@@ -287,7 +290,7 @@ namespace RssProjekt
 
         static public void UppdateDictionary ()
         {
-            FeedDictionary = xmlFeed.LoadDirectory(Podcasts);
+            FeedDictionary = xmlFeed.LoadDictionary(Podcasts);
         }
 
 
@@ -313,7 +316,7 @@ namespace RssProjekt
                 var listToUse = ListWhereKat(selectedKat);
                 foreach (var pod in listToUse)
                 {
-                    lvPodcast.Items.Add(pod.MakeListView());
+                    lvPodcast.Items.Add(pod.MakeListView(pod.PodId.ToString(), pod.RssUrl, pod.Namn, pod.Avsnitt.ToString(), pod.Kategori, pod.Uppdatering));
                 }
             }
             else
@@ -330,6 +333,25 @@ namespace RssProjekt
             //
             List<Podcast> newList = Podcasts.Where(pod => pod.Kategori.Equals(kat)).ToList();
             return newList;
+        }
+
+        private void lvPodcast_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvPodcast.SelectedItems.Count > 0)
+            {
+                string selected = lvPodcast.SelectedItems[0].Text;
+                List<Feed> listToUse = FeedDictionary[selected];
+                lVFeed.Items.Clear();
+                foreach(var feed in listToUse)
+                {
+                    lVFeed.Items.Add(feed.MakeListView(feed.Title));
+                }
+               // MessageBox.Show(selected + listToUse);
+                    }
+            else
+            {
+                lVFeed.Items.Clear();
+            }
         }
     }
 }

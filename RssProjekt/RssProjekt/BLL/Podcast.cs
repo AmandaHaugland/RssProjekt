@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace RssProjekt.BLL
 {
     [Serializable()]
-   public class Podcast: ISerializable 
+   public class Podcast: MethodListView, ISerializable 
     {
         public string RssUrl { get; set; }
         public string Namn { get; set; }
@@ -21,10 +21,10 @@ namespace RssProjekt.BLL
         public Podcast() { }
         //Ska ha metod för att sätta antal avsnitt
 
-        public List<string> MakeLVItem()
-        {
-            return new List<string> { RssUrl, Namn, Avsnitt.ToString(), Kategori, Uppdatering };
-        }
+      //  public List<string> MakeLVItem()
+      //  {
+      //      return new List<string> { RssUrl, Namn, Avsnitt.ToString(), Kategori, Uppdatering };
+      //  }
         public int MakeId(List<Podcast> podList)
         {
             int lengthOfPodList = podList.Count;
@@ -41,10 +41,10 @@ namespace RssProjekt.BLL
        }
 
 
-        public ListViewItem MakeListView()
-        {
-            return new ListViewItem(MakeLVItem().ToArray());
-        }
+      //  public ListViewItem MakeListView()
+      //  {
+      //      return new ListViewItem(MakeLVItem().ToArray());
+      //  }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {

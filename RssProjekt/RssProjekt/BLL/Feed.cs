@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 namespace RssProjekt.BLL
 {
     [Serializable, XmlRoot("feed")]
-    public class Feed : ISerializable
+    public class Feed : MethodListView, ISerializable
     {
         public string Title { get; set; }
         public string Description { get; set; }
@@ -36,10 +36,10 @@ namespace RssProjekt.BLL
             //PubDate = (string)info.GetValue("PubDate", typeof(string));
         }
 
-        public ListViewItem MakeListView()
-        {
-            var list = new List<string> { Title };
-            return new ListViewItem(list.ToArray());
-        }
+        //public ListViewItem MakeListView()
+        //{
+        //    var list = new List<string> { Title };
+        //    return new ListViewItem(list.ToArray());
+        //}
     }
 }
