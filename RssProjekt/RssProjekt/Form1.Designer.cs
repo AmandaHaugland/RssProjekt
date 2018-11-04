@@ -236,6 +236,7 @@
             this.taBortKategorie.TabIndex = 15;
             this.taBortKategorie.Text = "Ta bort";
             this.taBortKategorie.UseVisualStyleBackColor = true;
+            this.taBortKategorie.Click += new System.EventHandler(this.taBortKategorie_Click);
             // 
             // btnAndraPod
             // 

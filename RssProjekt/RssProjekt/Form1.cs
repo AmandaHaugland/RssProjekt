@@ -100,16 +100,21 @@ namespace RssProjekt
         private void button2_Click(object sender, EventArgs e)
         {
             var addKategori = tbKategori.Text.Trim();
-            Validering katNamn = new Validering();
+            Validering validering = new Validering();
             //Lägg till validering
-            if (katNamn.CheckIf(addKategori))
+            if (validering.CheckIf(addKategori))
             {
-                //kategorier.AddKatToList(tbKategori.Text.Trim());
+                if (!validering.CheckIfKatExists(addKategori, KategoriLista))
+                {
 
-                KategoriLista.Add(tbKategori.Text.Trim());
-                xmlKategori.AddKategoriToXml(KategoriLista);
-                UpdateKatLists();
-                tbKategori.Clear();
+                    KategoriLista.Add(tbKategori.Text.Trim());
+                    xmlKategori.AddKategoriToXml(KategoriLista);
+                    UpdateKatLists();
+                    tbKategori.Clear();
+                }
+                    //kategorier.AddKatToList(tbKategori.Text.Trim());
+
+                    
             }
           
         }
@@ -364,6 +369,11 @@ namespace RssProjekt
                 {
                     string selectedKat = lvCategory.SelectedItems[0].Text;
                     string nyKategori = tbKategori.Text.Trim();
+
+                    if(!validering.CheckIfKatExists(nyKategori, KategoriLista))
+                    {
+
+                    
                     KategoriLista.Remove(selectedKat);
                     KategoriLista.Add(nyKategori);
                     foreach(var pod in Podcasts)
@@ -378,8 +388,28 @@ namespace RssProjekt
                     xmlKategori.AddKategoriToXml(KategoriLista);
                     UpdatePodList();
                     UpdateKatLists();
-                    
+                    }
                 }
+                
+            }
+        }
+
+        private void taBortKategorie_Click(object sender, EventArgs e)
+        {
+            if (lvCategory.SelectedItems.Count > 0)
+            {
+                Validering validering = new Validering();
+               // if (validering.CheckIf(tbKategori.Text.Trim()))
+                
+                    string selectedKat = lvCategory.SelectedItems[0].Text;
+                    //string taBortKat = tbKategori.Text.Trim();
+
+                    if (!validering.IfPodHasKat(selectedKat, Podcasts))
+                    {
+                        KategoriLista.Remove(selectedKat);
+                        xmlKategori.AddKategoriToXml(KategoriLista);
+                        UpdateKatLists();
+                    }
                 
             }
         }

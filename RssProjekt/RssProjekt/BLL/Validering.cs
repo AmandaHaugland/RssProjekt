@@ -64,8 +64,34 @@ namespace RssProjekt.BLL
                 return true;
             }
         }
+
+        //Använd för att se om det finns flera kategorier
+        public bool CheckIfKatExists(string katToCheck, List<string> listToCheck)
+        {
+            foreach(var thing in listToCheck)
+            {
+                if (thing.Equals(katToCheck))
+                {
+                    MessageBox.Show(katToCheck + " finns redan i listan!");
+                    return true;
+                }
+            }
+            return false;
+        }
         
-       
+       public bool IfPodHasKat(string kat, List<Podcast> podcasts)
+        {
+            foreach(var pod in podcasts)
+            {
+                var podKat = pod.Kategori;
+                if (podKat.Equals(kat))
+                {
+                    MessageBox.Show("Det finns minst en pod med kategorin " + kat + ". Ändra poddarnas kategorier och försök igen!");
+                    return true;
+                }
+            }
+            return false;
+        }
 
     }
 }
