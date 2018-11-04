@@ -375,6 +375,7 @@ namespace RssProjekt
                         }
                     }
                     xmlPodcast.addPodToXml(Podcasts);
+                    xmlKategori.AddKategoriToXml(KategoriLista);
                     UpdatePodList();
                     UpdateKatLists();
                     
