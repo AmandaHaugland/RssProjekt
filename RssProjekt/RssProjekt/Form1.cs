@@ -231,7 +231,7 @@ namespace RssProjekt
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    MessageBox.Show("Du måste klicka på url för att ta bort den från listan!");
+                    MessageBox.Show("Du måste klicka på id för att ta bort den från listan!");
                 }
 
                    // MessageBox.Show("Podcast tog bort");
@@ -246,11 +246,11 @@ namespace RssProjekt
            
             Podcast podToDelete = new Podcast();
             XmlDocument doc = new XmlDocument();
-            doc.Load("..\\xmlpodcasttest.xml");
+            doc.Load("xmlpodcasttest.xml");
             foreach (XmlNode xNode in doc.SelectNodes("ArrayOfPodcast/Podcast"))
             {
                 if (xNode.SelectSingleNode("Namn").InnerText == tbName.Text) xNode.ParentNode.RemoveChild(xNode);
-                doc.Save("..\\xmlpodcasttest.xml");
+                doc.Save("xmlpodcasttest.xml");
                 
 
 
@@ -411,6 +411,54 @@ namespace RssProjekt
                         UpdateKatLists();
                     }
                 
+            }
+        }
+
+
+        private void btnAndraPod_Click(object sender, EventArgs e)
+        {
+            Podcast podToChange = new Podcast();
+           List<string> podLista = podToChange.MakeLVItem(tbUrl.Text);
+
+
+                 if (lvCategory.SelectedItems.Count > 0)
+            {
+                Validering validering = new Validering();
+
+                if (validering.CheckIf(tbName.Text.Trim()))
+                {
+                    string selectedPod = lvPodcast.SelectedItems[0].Text;
+                    string nyUrl = tbUrl.Text.Trim();
+                    string nyKat = cbCategory.Text;
+                    string nyUppdatering = cbUpdate.Text;
+
+
+
+                        podLista.Remove(selectedPod);
+                        podLista.Add(nyUrl);
+                    podLista.Remove(selectedPod);
+                    podLista.Add(nyKat);
+                    podLista.Remove(selectedPod);
+                    podLista.Add(nyUppdatering);
+
+                    foreach (var pod in Podcasts)
+                        {
+                            var podsUrl = pod.RssUrl;
+                        var podKat = pod.Kategori;
+                       var podUppdatering = pod.Uppdatering;
+                            if (podsUrl.Equals(selectedPod) || podKat.Equals(selectedPod) || podUppdatering.Equals(selectedPod))
+                            {
+                                pod.RssUrl = nyUrl;
+                            pod.Kategori = nyKat;
+                            }
+                        }
+                        xmlPodcast.addPodToXml(Podcasts);
+                        
+                        UpdatePodList();
+                       
+                    
+                }
+
             }
         }
     }
