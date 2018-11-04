@@ -17,8 +17,8 @@ namespace RssProjekt
 {
     public partial class Form1 : Form
     {
-        private List<Podcast> Podcasts { get; set; }
-        Dictionary<string, List<Feed>> FeedDictionary = new Dictionary<string, List<Feed>>();
+       static private List<Podcast> Podcasts { get; set; }
+       static Dictionary<string, List<Feed>> FeedDictionary = new Dictionary<string, List<Feed>>();
         static Podcast podcastIn = new Podcast();
 
         static Kategorier kategorier = new Kategorier();
@@ -28,6 +28,8 @@ namespace RssProjekt
         static Feed feed = new Feed();
         static XmlPod xmlPodcast = new XmlPod();
         static XmlFeed xmlFeed = new XmlFeed();
+
+        static UppdateraFeed uppdateraFeed = new UppdateraFeed();
       
 
         public Form1()
@@ -45,8 +47,10 @@ namespace RssProjekt
 
             xmlPodcast.ifItExists(Podcasts);
             Podcasts = xmlPodcast.loadSavedPods(Podcasts);
+            StartLookingForUppdates();
             UpdatePodList();
             UpdateKatLists();
+
         }
 
         public void UpdatePodList()
@@ -149,6 +153,7 @@ namespace RssProjekt
                 cbUpdate.SelectedIndex = -1;
                 Podcasts.Add(podToAdd);
                 xmlPodcast.addPodToXml(Podcasts);
+                UpdateTimer(uppdateringToAdd, urlToAdd, idToAdd.ToString());
 
                 List<Feed> feedToAdd = xmlFeed.makeFeed(urlToAdd);
                 xmlFeed.addMappForFeed(idToAdd.ToString());
@@ -239,5 +244,58 @@ namespace RssProjekt
             return true;
 
         }
+
+        public void UpdateTimer(string uppd, string url, string id)
+        {
+            int timerTime = 15000;
+            if(uppd.Equals("30 minuter"))
+            {
+                timerTime = 1800000;
+            } else if(uppd.Equals("1 timme"))
+            {
+                timerTime = 3600000;
+            }
+           
+            else
+            {
+                timerTime = 10800000;
+            }
+            System.Timers.Timer timer = new System.Timers.Timer(timerTime);
+            timer.Elapsed += (sender, e) => { OnTimedEvent(url, id); };
+            timer.Enabled = true;
+        }
+
+
+        private static void OnTimedEvent(string url, string id)
+        {
+            MessageBox.Show("Testar: " + url + "   " + id);
+            if (uppdateraFeed.CheckIfUpdated(id, url))
+            {
+                MessageBox.Show("Testar: " + url + "   " + id + "   Har UPPDATERATS!!!");
+                var feedToAdd = xmlFeed.makeFeed(url);
+                xmlFeed.AddFeedToXml(feedToAdd, id);
+                UppdateDictionary();
+            }
+
+        }
+
+        static public void UppdateDictionary ()
+        {
+            FeedDictionary = xmlFeed.LoadDirectory(Podcasts);
+        }
+
+
+        //denna ska köras i början för att starta alla timers
+        public void StartLookingForUppdates()
+        {
+            foreach(Podcast pod in Podcasts)
+            {
+                string uppdatering = pod.Uppdatering;
+                string id = pod.PodId.ToString();
+                string url = pod.RssUrl;
+                UpdateTimer(uppdatering, url, id);
+            }
+        }
+
     }
 }

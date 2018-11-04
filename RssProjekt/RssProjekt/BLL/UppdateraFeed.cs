@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Windows.Forms;
 
 namespace RssProjekt.BLL
 {
@@ -35,17 +36,20 @@ namespace RssProjekt.BLL
 
         //En metod som tar in url, id och uppdatering
 
-        public void somethingsss(string uppd)
-        {
-            Timer timer = new Timer(10000);
-            timer.Elapsed += OnTimedEvent;
-            timer.Enabled = true;
-        }
-
-
-        private static void OnTimedEvent(object source, ElapsedEventArgs e)
-        {
-            // do stuff
-        }
+       // public void UpdateTimer(string uppd)
+       // {
+       //     System.Timers.Timer timer = new System.Timers.Timer(10000);
+       //     timer.Elapsed += (sender, e)=>{ OnTimedEvent(uppd); };
+       //     timer.Enabled = true;
+       // }
+       //
+       //
+       // private static void OnTimedEvent(string uppd)
+       // {
+       //     
+       //     MessageBox.Show("Testar: " + uppd);
+       //     FeedDictionary = xmlFeed.LoadDirectory(Podcasts)
+       //
+       // }
     }
 }

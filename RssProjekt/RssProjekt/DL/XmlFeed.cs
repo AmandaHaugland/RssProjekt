@@ -57,7 +57,7 @@ namespace RssProjekt.DL
         {
             var path = "Feed//" + podId + "/feed.xml";
             List<Feed> feedToReturn = new List<Feed>();
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Podcast>));
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Feed>));
             using (FileStream fs = File.OpenRead(path))
             {
                 feedToReturn = (List<Feed>)serializer.Deserialize(fs);

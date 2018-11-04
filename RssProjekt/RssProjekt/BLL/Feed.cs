@@ -4,11 +4,12 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml.Serialization;
 
- 
 namespace RssProjekt.BLL
 {
-    [Serializable()]
+    [Serializable, XmlRoot("feed")]
     public class Feed : ISerializable
     {
         public string Title { get; set; }
@@ -35,6 +36,10 @@ namespace RssProjekt.BLL
             //PubDate = (string)info.GetValue("PubDate", typeof(string));
         }
 
-
+        public ListViewItem MakeListView()
+        {
+            var list = new List<string> { Title };
+            return new ListViewItem(list.ToArray());
+        }
     }
 }

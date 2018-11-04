@@ -16,7 +16,7 @@ namespace RssProjekt.DL
     {
         //string path = "testaXml.xml";
         //Ändra så att path stämmer
-        string path = "..\\xmlpodcasttest.xml";
+        string path = "xmlpodcasttest.xml";
         public void ifItExists(List<Podcast> listOfPodcasts)
         {
             
@@ -33,7 +33,7 @@ namespace RssProjekt.DL
             }
             else
             {
-                MessageBox.Show("It exists");
+               // MessageBox.Show("It exists");
             }
         }
 
