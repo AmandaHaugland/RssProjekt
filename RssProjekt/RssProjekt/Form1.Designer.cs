@@ -53,7 +53,6 @@
             this.lVFeed = new System.Windows.Forms.ListView();
             this.label5 = new System.Windows.Forms.Label();
             this.lvCategory = new System.Windows.Forms.ListView();
-            this.btnTestFeed = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -284,17 +283,6 @@
             this.lvCategory.UseCompatibleStateImageBehavior = false;
             this.lvCategory.View = System.Windows.Forms.View.List;
             // 
-            // btnTestFeed
-            // 
-            this.btnTestFeed.Location = new System.Drawing.Point(415, 329);
-            this.btnTestFeed.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnTestFeed.Name = "btnTestFeed";
-            this.btnTestFeed.Size = new System.Drawing.Size(75, 34);
-            this.btnTestFeed.TabIndex = 21;
-            this.btnTestFeed.Text = "button1";
-            this.btnTestFeed.UseVisualStyleBackColor = true;
-            this.btnTestFeed.Click += new System.EventHandler(this.btnTestFeed_Click);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -324,7 +312,6 @@
             this.ClientSize = new System.Drawing.Size(1348, 594);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.btnTestFeed);
             this.Controls.Add(this.lvCategory);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lVFeed);
@@ -381,7 +368,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ListView lvCategory;
-        private System.Windows.Forms.Button btnTestFeed;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
     }
