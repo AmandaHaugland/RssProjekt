@@ -225,6 +225,7 @@
             this.ändraKtegori.TabIndex = 14;
             this.ändraKtegori.Text = "Ändra";
             this.ändraKtegori.UseVisualStyleBackColor = true;
+            this.ändraKtegori.Click += new System.EventHandler(this.ändraKtegori_Click);
             // 
             // taBortKategorie
             // 

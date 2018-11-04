@@ -73,7 +73,7 @@ namespace RssProjekt
                 //     pod.MakeListView());
                 lvPodcast.Items.Add(pod.MakeListView(pod.PodId.ToString(), pod.RssUrl, pod.Namn, pod.Avsnitt.ToString(), pod.Kategori, pod.Uppdatering));
             }
-
+            
 
 
            }
@@ -346,11 +346,40 @@ namespace RssProjekt
                 {
                     lVFeed.Items.Add(feed.MakeListView(feed.Title));
                 }
-               // MessageBox.Show(selected + listToUse);
-                    }
+               
+                 }
             else
             {
                 lVFeed.Items.Clear();
+            }
+        }
+
+        private void ändraKtegori_Click(object sender, EventArgs e)
+        {
+            if (lvCategory.SelectedItems.Count > 0)
+            {
+                Validering validering = new Validering();
+                
+                if (validering.CheckIf(tbKategori.Text.Trim()))
+                {
+                    string selectedKat = lvCategory.SelectedItems[0].Text;
+                    string nyKategori = tbKategori.Text.Trim();
+                    KategoriLista.Remove(selectedKat);
+                    KategoriLista.Add(nyKategori);
+                    foreach(var pod in Podcasts)
+                    {
+                        var podsKat = pod.Kategori;
+                        if (podsKat.Equals(selectedKat))
+                        {
+                            pod.Kategori = nyKategori;
+                        }
+                    }
+                    xmlPodcast.addPodToXml(Podcasts);
+                    UpdatePodList();
+                    UpdateKatLists();
+                    
+                }
+                
             }
         }
     }
