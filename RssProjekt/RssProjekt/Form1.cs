@@ -303,5 +303,33 @@ namespace RssProjekt
             }
         }
 
+        private void lvCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvCategory.SelectedItems.Count > 0)
+            {
+                string selectedKat = lvCategory.SelectedItems[0].Text;
+              
+                lvPodcast.Items.Clear();
+                var listToUse = ListWhereKat(selectedKat);
+                foreach (var pod in listToUse)
+                {
+                    lvPodcast.Items.Add(pod.MakeListView());
+                }
+            }
+            else
+            {
+                UpdatePodList();
+            }
+                
+        }
+
+        private List<Podcast> ListWhereKat(string kat)
+        {
+            //var query =
+            //    Podcasts.Where(i => i.Kategori.Equals(kat));
+            //
+            List<Podcast> newList = Podcasts.Where(pod => pod.Kategori.Equals(kat)).ToList();
+            return newList;
+        }
     }
 }

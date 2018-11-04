@@ -282,6 +282,7 @@
             this.lvCategory.TabIndex = 20;
             this.lvCategory.UseCompatibleStateImageBehavior = false;
             this.lvCategory.View = System.Windows.Forms.View.List;
+            this.lvCategory.SelectedIndexChanged += new System.EventHandler(this.lvCategory_SelectedIndexChanged);
             // 
             // label6
             // 
