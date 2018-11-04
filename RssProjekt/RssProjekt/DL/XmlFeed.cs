@@ -8,6 +8,7 @@ using System.Xml;
 using System.ServiceModel.Syndication;
 using System.IO;
 using System.Xml.Serialization;
+using System.Windows.Forms;
 
 namespace RssProjekt.DL
 {
@@ -20,15 +21,23 @@ namespace RssProjekt.DL
         public List<Feed> makeFeed(string rssUrl)
         {
             List<Feed> listOfFeed = new List<Feed>();
-            XmlReader reader = XmlReader.Create(rssUrl);
-            var syndicationFeed = SyndicationFeed.Load(reader);
-            foreach(var item in syndicationFeed.Items)
+            try
             {
-                Feed feed = new Feed();
-                feed.Title = item.Title.Text;
-                feed.Description = item.Summary.Text;
-                //feed.PodId = podId;
-                listOfFeed.Add(feed);
+               
+                XmlReader reader = XmlReader.Create(rssUrl);
+                var syndicationFeed = SyndicationFeed.Load(reader);
+                foreach (var item in syndicationFeed.Items)
+                {
+                    Feed feed = new Feed();
+                    feed.Title = item.Title.Text;
+                    feed.Description = item.Summary.Text;
+                    //feed.PodId = podId;
+                    listOfFeed.Add(feed);
+                }
+                
+            } catch(Exception ex)
+            {
+                MessageBox.Show("Det gick inte att göra feed, kolla Url. Felmeddelande: " + ex.Message);
             }
             return listOfFeed;
         }
@@ -42,13 +51,20 @@ namespace RssProjekt.DL
 
         public void AddFeedToXml(List<Feed> listOfFeed, string mapp)
         {
-            string path = "Feed//" + mapp + "/feed.xml";
-            using (Stream fs = new FileStream(path,
-                FileMode.Create, FileAccess.Write, FileShare.None))
+            try
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(List<Feed>));
-                serializer.Serialize(fs, listOfFeed);
+                string path = "Feed//" + mapp + "/feed.xml";
 
+                using (Stream fs = new FileStream(path,
+                    FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<Feed>));
+                    serializer.Serialize(fs, listOfFeed);
+
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Det gick inte att spara feeden i xml. /n Felmeddelande: " + ex.Message);
             }
         }
 
@@ -57,10 +73,16 @@ namespace RssProjekt.DL
         {
             var path = "Feed//" + podId + "/feed.xml";
             List<Feed> feedToReturn = new List<Feed>();
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Feed>));
-            using (FileStream fs = File.OpenRead(path))
+            try
             {
-                feedToReturn = (List<Feed>)serializer.Deserialize(fs);
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Feed>));
+                using (FileStream fs = File.OpenRead(path))
+                {
+                    feedToReturn = (List<Feed>)serializer.Deserialize(fs);
+                }
+            } catch(Exception ex)
+            {
+                MessageBox.Show("Det gick inte att ladda sparade Feed. Felmeddelande : " + ex.Message);
             }
             return feedToReturn;
         }
@@ -71,11 +93,17 @@ namespace RssProjekt.DL
         {
             
             Dictionary<string, List<Feed>> dictionaryToReturn = new Dictionary<string, List<Feed>>();
-            foreach(Podcast pod in podcasts)
+            try
             {
-                var id = pod.PodId;
-                dictionaryToReturn[id.ToString()] = LoadSavedFeeds(id.ToString());
+                foreach (Podcast pod in podcasts)
+                {
+                    var id = pod.PodId;
+                    dictionaryToReturn[id.ToString()] = LoadSavedFeeds(id.ToString());
 
+                }
+            } catch(Exception ex)
+            {
+                MessageBox.Show("Det gick inte att läsa in alla sparade feeds. Felmeddelande : " + ex.Message);
             }
             return dictionaryToReturn;
             

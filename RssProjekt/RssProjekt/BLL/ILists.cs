@@ -10,7 +10,8 @@ namespace RssProjekt.BLL
     interface ILists
     {
         ListViewItem MakeListView();
+        List<string> MakeLVItem();
 
-        int MakeId();
+        //int MakeId();
     }
 }
