@@ -499,5 +499,24 @@ namespace RssProjekt
         {
             Podcasts = Podcasts.OrderBy(p => p.PodId).ToList();
         }
+
+        private void lVFeed_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //lvBeskrivning.Items.Clear();
+            lblBeskrivning.Text = "";
+            if(lVFeed.SelectedItems.Count > 0)
+            {
+                string selected = lvPodcast.SelectedItems[0].Text;
+                List<Feed> listToUse = FeedDictionary[selected];
+
+                string selectedAvsnitt = lVFeed.SelectedItems[0].Text;
+
+                var description = (listToUse.Find(a => a.Title.Equals(selectedAvsnitt))).Description;
+
+               // lvBeskrivning.Items.Add(description);
+                lblBeskrivning.Text =  description.ToString();
+                //MessageBox.Show(description);
+            }
+        }
     }
 }
