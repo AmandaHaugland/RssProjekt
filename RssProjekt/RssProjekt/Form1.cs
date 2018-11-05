@@ -2,12 +2,8 @@
 using RssProjekt.DL;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -512,12 +508,14 @@ namespace RssProjekt
 
                 string selectedAvsnitt = lVFeed.SelectedItems[0].Text;
 
-                var description = (listToUse.Find(a => a.Title.Equals(selectedAvsnitt))).Description;
-
-               // lvBeskrivning.Items.Add(description);
+                var description = (listToUse.Find(a => a.Title.Equals(selectedAvsnitt))).Description; 
                 lblBeskrivning.Text =  description.ToString();
-                //MessageBox.Show(description);
+
+
+                
             }
         }
+
+       
     }
 }
