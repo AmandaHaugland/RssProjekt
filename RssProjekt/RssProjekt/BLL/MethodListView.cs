@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace RssProjekt.BLL
 {
-    public class MethodListView
+    public class MethodListView 
     {
         public virtual List<string> MakeLVItem(string id, string rssUrl, string namn, string avsnitt, string kategori, string uppdatering)
         {

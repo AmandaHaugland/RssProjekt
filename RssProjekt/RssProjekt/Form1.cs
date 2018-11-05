@@ -418,45 +418,77 @@ namespace RssProjekt
         private void btnAndraPod_Click(object sender, EventArgs e)
         {
             Podcast podToChange = new Podcast();
-           List<string> podLista = podToChange.MakeLVItem(tbUrl.Text);
+          // List<string> podLista = podToChange.MakeLVItem(tbUrl.Text);
 
 
-                 if (lvCategory.SelectedItems.Count > 0)
+                 if (lvPodcast.SelectedItems.Count > 0)
             {
                 Validering validering = new Validering();
 
-                if (validering.CheckIf(tbName.Text.Trim()))
+                if (!validering.SeeIfTextBoxIsEmpty(tbUrl.Text) || validering.IfCheckboxChanged(cbCategory.SelectedIndex) || validering.IfCheckboxChanged(cbUpdate.SelectedIndex))
                 {
                     string selectedPod = lvPodcast.SelectedItems[0].Text;
+                    
+
                     string nyUrl = tbUrl.Text.Trim();
                     string nyKat = cbCategory.Text;
                     string nyUppdatering = cbUpdate.Text;
+                    Podcast podToRemove = new Podcast();
+
+                    var podIdToRemove = 0; 
 
 
-
-                        podLista.Remove(selectedPod);
-                        podLista.Add(nyUrl);
-                    podLista.Remove(selectedPod);
-                    podLista.Add(nyKat);
-                    podLista.Remove(selectedPod);
-                    podLista.Add(nyUppdatering);
-
-                    foreach (var pod in Podcasts)
+               foreach(var pod in Podcasts)
+                    {
+                        string podIdToCheck = pod.PodId.ToString();
+                        if (podIdToCheck.Equals(selectedPod))
                         {
-                            var podsUrl = pod.RssUrl;
-                        var podKat = pod.Kategori;
-                       var podUppdatering = pod.Uppdatering;
-                            if (podsUrl.Equals(selectedPod) || podKat.Equals(selectedPod) || podUppdatering.Equals(selectedPod))
+                            podIdToRemove = pod.PodId;
+                            podToRemove = pod;
+                            var oldUrl = pod.RssUrl;
+                            //var oldName = pod.Namn;
+                            var oldKat = pod.Kategori;
+                            var oldUppdatering = pod.Uppdatering;
+                            
+                            if (!validering.SeeIfTextBoxIsEmpty(tbUrl.Text))
                             {
-                                pod.RssUrl = nyUrl;
-                            pod.Kategori = nyKat;
+                                podToChange.RssUrl = nyUrl;
+                            } else
+                            {
+                                podToChange.RssUrl = oldUrl;
                             }
+
+                            if (validering.IfCheckboxChanged(cbCategory.SelectedIndex))
+                            {
+                                podToChange.Kategori = nyKat;
+                            }
+                            else
+                            {
+                                podToChange.Kategori = oldKat;
+                            }
+
+                            if (validering.IfCheckboxChanged(cbUpdate.SelectedIndex))
+                            {
+                                podToChange.Uppdatering = nyUppdatering;
+                            }
+                            else
+                            {
+                                podToChange.Uppdatering = oldUppdatering;
+                            }
+                            podToChange.PodId = pod.PodId;
+                            podToChange.Namn = pod.Namn;
+
+                            xmlPodcast.addPodToXml(Podcasts);
+                            UpdatePodList();
                         }
-                        xmlPodcast.addPodToXml(Podcasts);
                         
-                        UpdatePodList();
-                       
-                    
+                    }
+
+
+                    Podcasts.Remove(Podcasts.Find(x => x.PodId.Equals(podIdToRemove)));
+                    //Podcasts.Remove(podToRemove);
+                    Podcasts.Add(podToChange);
+
                 }
 
             }

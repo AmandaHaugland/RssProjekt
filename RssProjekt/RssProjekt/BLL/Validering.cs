@@ -93,5 +93,28 @@ namespace RssProjekt.BLL
             return false;
         }
 
+        public bool SeeIfTextBoxIsEmpty(string tb)
+        {
+            if (string.IsNullOrEmpty(tb)){
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool IfCheckboxChanged(int cb)
+        {
+            if(cb <= -1)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
     }
 }
