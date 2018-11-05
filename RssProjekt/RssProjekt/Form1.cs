@@ -450,6 +450,11 @@ namespace RssProjekt
                             if (!validering.SeeIfTextBoxIsEmpty(tbUrl.Text))
                             {
                                 podToChange.RssUrl = nyUrl;
+
+                                List<Feed> feedToAdd = xmlFeed.makeFeed(nyUrl);
+                                //xmlFeed.addMappForFeed(idToAdd.ToString());
+                                xmlFeed.AddFeedToXml(feedToAdd, pod.PodId.ToString());
+                                FeedDictionary[pod.PodId.ToString()] = feedToAdd;
                             } else
                             {
                                 podToChange.RssUrl = oldUrl;
