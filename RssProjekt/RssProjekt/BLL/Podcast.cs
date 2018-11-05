@@ -21,6 +21,7 @@ namespace RssProjekt.BLL
         public Podcast() { }
         //Ska ha metod för att sätta antal avsnitt
 
+
       //  public List<string> MakeLVItem()
       //  {
       //      return new List<string> { RssUrl, Namn, Avsnitt.ToString(), Kategori, Uppdatering };

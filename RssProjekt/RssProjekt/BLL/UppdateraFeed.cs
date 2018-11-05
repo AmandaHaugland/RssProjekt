@@ -34,22 +34,5 @@ namespace RssProjekt.BLL
 
         }
 
-        //En metod som tar in url, id och uppdatering
-
-       // public void UpdateTimer(string uppd)
-       // {
-       //     System.Timers.Timer timer = new System.Timers.Timer(10000);
-       //     timer.Elapsed += (sender, e)=>{ OnTimedEvent(uppd); };
-       //     timer.Enabled = true;
-       // }
-       //
-       //
-       // private static void OnTimedEvent(string uppd)
-       // {
-       //     
-       //     MessageBox.Show("Testar: " + uppd);
-       //     FeedDictionary = xmlFeed.LoadDirectory(Podcasts)
-       //
-       // }
     }
 }
