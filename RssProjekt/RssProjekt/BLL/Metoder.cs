@@ -12,5 +12,23 @@ namespace RssProjekt.BLL
         {
             return feed.Count();
         }
+
+        public Podcast NewPodcast(string namn, string url, string kategori, string uppdatering, int id)
+        {
+            
+
+            Podcast podToAdd = new Podcast
+            {
+                Namn = namn,
+                RssUrl = url,
+                Kategori = kategori,
+                Uppdatering = uppdatering,
+                PodId = id
+            };
+
+            return podToAdd;
+        }
+
+
     }
 }

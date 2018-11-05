@@ -140,22 +140,11 @@ namespace RssProjekt
             {
                 AsyncMethod();
                 label6.Text = "Wating...";
-                
-
-
                 var idToAdd = podcastIn.MakeId(Podcasts);
-                Podcast podToAdd = new Podcast
-                {
-                    Namn = nameToAdd,
-                    RssUrl = urlToAdd,
-                    Kategori = kategoriToAdd,
-                    Uppdatering = uppdateringToAdd,
-                    PodId = idToAdd
-                };
 
 
-
-
+                Metoder metoder = new Metoder();
+                var podToAdd = metoder.NewPodcast(nameToAdd, urlToAdd, kategoriToAdd, uppdateringToAdd, idToAdd);
 
                 tbName.Clear();
                 tbUrl.Clear();
@@ -168,12 +157,6 @@ namespace RssProjekt
                 List<Feed> feedToAdd = xmlFeed.makeFeed(urlToAdd);
                 xmlFeed.addMappForFeed(idToAdd.ToString());
                 xmlFeed.AddFeedToXml(feedToAdd, idToAdd.ToString());
-
-                //Lägger till Feeden i dictionary med podid som nyckel
-                // List<Feed> feedListToAdd = new List<Feed>();
-                // feedListToAdd = xmlFeed.makeFeed(urlToAdd);
-                // FeedDictionary[idToAdd.ToString()] = feedListToAdd;
-
                 FeedDictionary[idToAdd.ToString()] = feedToAdd;
                
                 UpdatePodList();
