@@ -34,5 +34,10 @@ namespace RssProjekt.BLL
             List<Podcast> newList = podcasts.Where(pod => pod.Kategori.Equals(kat)).ToList();
             return newList;
         }
+
+        public List<Podcast> SortPodList(List<Podcast> podcasts)
+        {
+           return podcasts = podcasts.OrderBy(p => p.PodId).ToList();
+        }
     }
 }

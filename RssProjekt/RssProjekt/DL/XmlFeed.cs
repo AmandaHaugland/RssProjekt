@@ -14,10 +14,9 @@ namespace RssProjekt.DL
 {
     class XmlFeed
     {
-        //använd denna genom att sätta lista = metoden. Namnsätt lista efter podID, så blir pod kopplat till feed
-        //Måste köra en metod som ser till att det är en url som skickas in
+       
 
-            //Vi måste jobba med undantag och felhantering.......
+           
         public List<Feed> makeFeed(string rssUrl)
         {
             List<Feed> listOfFeed = new List<Feed>();
@@ -31,7 +30,7 @@ namespace RssProjekt.DL
                     Feed feed = new Feed();
                     feed.Title = item.Title.Text;
                     feed.Description = item.Summary.Text;
-                    //feed.PodId = podId;
+                    
                     listOfFeed.Add(feed);
                 }
                 

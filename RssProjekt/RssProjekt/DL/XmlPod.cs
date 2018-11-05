@@ -11,18 +11,16 @@ using System.Xml.Serialization;
 namespace RssProjekt.DL
 {
 
-    //"..\\xmlpodcasttest.xml"
+    
     class XmlPod
     {
-        //string path = "testaXml.xml";
-        //Ändra så att path stämmer
-        string path = "xmlpodcasttest.xml";
+       
+        string path = "xmlPodcasts.xml";
         public void ifItExists(List<Podcast> listOfPodcasts)
         {
             
             if (!File.Exists(path))
             {
-                //FileStream fs = new FileStream("..\\xmlpodcasttest.xml", FileMode.CreateNew, FileAccess.ReadWrite);
                 using (Stream fs = new FileStream(path,
                FileMode.Create, FileAccess.Write, FileShare.None))
                 {
@@ -31,10 +29,7 @@ namespace RssProjekt.DL
 
                 }
             }
-            else
-            {
-               // MessageBox.Show("It exists");
-            }
+            
         }
 
         public void addPodToXml(List<Podcast> listOfPodcasts)

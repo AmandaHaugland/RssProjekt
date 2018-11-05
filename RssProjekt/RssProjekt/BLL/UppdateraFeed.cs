@@ -14,7 +14,7 @@ namespace RssProjekt.BLL
         XmlFeed xmlFeed = new XmlFeed();
 
 
-        //Kanske göra om till en void?? Som bara kör metod för att uppdatera
+       
         public bool CheckIfUpdated(string podId, string url)
         {
             var feedToCheck = xmlFeed.LoadSavedFeeds(podId);
@@ -24,7 +24,7 @@ namespace RssProjekt.BLL
             string newTitle = newestFeed[0].Title;
             if(!oldTitle.Equals(newTitle))
             {
-                //De är INTE likadana
+               
                 return true;
             }
             else

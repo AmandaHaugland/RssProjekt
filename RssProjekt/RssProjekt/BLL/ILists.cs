@@ -12,6 +12,6 @@ namespace RssProjekt.BLL
         ListViewItem MakeListView(string title);
         List<string> MakeLVItem(string title);
 
-        //int MakeId();
+        
     }
 }
