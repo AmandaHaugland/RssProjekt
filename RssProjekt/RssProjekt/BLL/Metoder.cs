@@ -29,6 +29,10 @@ namespace RssProjekt.BLL
             return podToAdd;
         }
 
-
+        public List<Podcast> ListWhereKat(string kat, List<Podcast> podcasts)
+        {
+            List<Podcast> newList = podcasts.Where(pod => pod.Kategori.Equals(kat)).ToList();
+            return newList;
+        }
     }
 }
