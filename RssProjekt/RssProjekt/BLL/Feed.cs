@@ -36,10 +36,6 @@ namespace RssProjekt.BLL
             //PubDate = (string)info.GetValue("PubDate", typeof(string));
         }
 
-        //public ListViewItem MakeListView()
-        //{
-        //    var list = new List<string> { Title };
-        //    return new ListViewItem(list.ToArray());
-        //}
+        
     }
 }

@@ -61,13 +61,13 @@ namespace RssProjekt
            // Podcasts = new List<Podcast>();
             Podcasts = xmlPodcast.loadSavedPods(Podcasts);
             xmlFeed.addMappForFeed("TestMapp");
-
+            Metoder metod = new Metoder();
 
             foreach (var pod in Podcasts)
             {
-                // lvPodcast.Items.Add(
-                //     pod.MakeListView());
-                lvPodcast.Items.Add(pod.MakeListView(pod.PodId.ToString(), pod.RssUrl, pod.Namn, pod.Avsnitt.ToString(), pod.Kategori, pod.Uppdatering));
+                var feed = FeedDictionary[pod.PodId.ToString()];
+                int antalAvsnitt = metod.AntalAvsnitt(feed);
+                lvPodcast.Items.Add(pod.MakeListView(pod.PodId.ToString(), pod.RssUrl, pod.Namn, antalAvsnitt.ToString(), pod.Kategori, pod.Uppdatering));
             }
             
 
@@ -279,10 +279,10 @@ namespace RssProjekt
 
         private static void OnTimedEvent(string url, string id)
         {
-            MessageBox.Show("Testar: " + url + "   " + id);
+            
             if (uppdateraFeed.CheckIfUpdated(id, url))
             {
-                MessageBox.Show("Testar: " + url + "   " + id + "   Har UPPDATERATS!!!");
+               
                 var feedToAdd = xmlFeed.makeFeed(url);
                 xmlFeed.AddFeedToXml(feedToAdd, id);
                 UppdateDictionary();
