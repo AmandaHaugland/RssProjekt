@@ -31,7 +31,7 @@ namespace RssProjekt
 
         static UppdateraFeed uppdateraFeed = new UppdateraFeed();
       
-
+        
         public Form1()
         {
             InitializeComponent();
@@ -220,19 +220,20 @@ namespace RssProjekt
         {
             var nameToRemove = tbName.Text.Trim();
             Validering valid = new Validering();
-            if (valid.CheckIf(nameToRemove)) { 
+            if (valid.CheckIf(nameToRemove)) {
+                TaBortPod();
 
-            if (TaBortPod())
-            {
+            //if (TaBortPod())
+           // {
                 
-                try
-                {
-                    lvPodcast.Items.RemoveAt(lvPodcast.SelectedIndices[0]);
-                }
-                catch (ArgumentOutOfRangeException)
-                {
-                    MessageBox.Show("Du måste klicka på id för att ta bort den från listan!");
-                }
+             //   try
+              //  {
+                 //   lvPodcast.Items.RemoveAt(lvPodcast.SelectedIndices[0]);
+                //}
+              //  catch (ArgumentOutOfRangeException)
+               // {
+                  //  MessageBox.Show("Du måste klicka på id för att ta bort den från listan!");
+               // }
 
                    // MessageBox.Show("Podcast tog bort");
                 }
@@ -240,7 +241,7 @@ namespace RssProjekt
             }
             
 
-        }
+        
         public bool TaBortPod()
         {
            
@@ -251,8 +252,8 @@ namespace RssProjekt
             {
                 if (xNode.SelectSingleNode("Namn").InnerText == tbName.Text) xNode.ParentNode.RemoveChild(xNode);
                 doc.Save("xmlpodcasttest.xml");
-                
 
+                UpdatePodList();
 
             }
             return true;
