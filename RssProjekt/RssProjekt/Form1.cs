@@ -478,6 +478,7 @@ namespace RssProjekt
                             podToChange.PodId = pod.PodId;
                             podToChange.Namn = pod.Namn;
 
+                            SortPodList();
                             xmlPodcast.addPodToXml(Podcasts);
                             UpdatePodList();
                         }
@@ -492,6 +493,11 @@ namespace RssProjekt
                 }
 
             }
+        }
+
+        public void SortPodList()
+        {
+            Podcasts = Podcasts.OrderBy(p => p.PodId).ToList();
         }
     }
 }
