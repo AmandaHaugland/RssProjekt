@@ -26,7 +26,7 @@ namespace RssProjekt
         static XmlFeed xmlFeed = new XmlFeed();
 
         static UppdateraFeed uppdateraFeed = new UppdateraFeed();
-        static Metoder metoder = new Metoder();
+      
         
         public Form1()
         {
@@ -277,7 +277,7 @@ namespace RssProjekt
                 string selectedKat = lvCategory.SelectedItems[0].Text;
               
                 lvPodcast.Items.Clear();
-                var listToUse = metoder.ListWhereKat(selectedKat, Podcasts);
+                var listToUse = ListWhereKat(selectedKat);
                 foreach (var pod in listToUse)
                 {
                     lvPodcast.Items.Add(pod.MakeListView(pod.PodId.ToString(), pod.RssUrl, pod.Namn, pod.Avsnitt.ToString(), pod.Kategori, pod.Uppdatering));
@@ -290,7 +290,14 @@ namespace RssProjekt
                 
         }
 
-       
+        private List<Podcast> ListWhereKat(string kat)
+        {
+            //var query =
+            //    Podcasts.Where(i => i.Kategori.Equals(kat));
+            //
+            List<Podcast> newList = Podcasts.Where(pod => pod.Kategori.Equals(kat)).ToList();
+            return newList;
+        }
 
         private void lvPodcast_SelectedIndexChanged(object sender, EventArgs e)
         {
