@@ -14,10 +14,7 @@ namespace RssProjekt.BLL
        
         public bool CheckIf(String url, String namn, int kategori, int uppdatering)
         {
-            //string Url = url;
-           // Regex rx = new Regex(@"/^(https?:\/\/)[a-zA-Z0-9]+\.[a-zA-Z0-9]+\.[a-zA-Z0-9]+\/[a-zA-Z0-9]+/");
-           // bool b = Url.Contains((@"/^(https?:\/\/)[a-zA-Z0-9]+\.[a-zA-Z0-9]+\.[a-zA-Z0-9]+\/[a-zA-Z0-9]+/"));
-
+          
             if (string.IsNullOrEmpty(url) ||
                 string.IsNullOrEmpty(namn) ||
                 kategori <= -1 ||
@@ -26,8 +23,6 @@ namespace RssProjekt.BLL
             {
                 MessageBox.Show("Du måste fylla i fälten!");
                 return false;
-                //Lägg till felmeddelande??
-
             }
 
             Uri uri = null;
@@ -36,13 +31,6 @@ namespace RssProjekt.BLL
                 MessageBox.Show("fel url, försöka igen!");
                 return false;
             }
-
-            // else if ("")
-
-            // {
-            //   MessageBox.Show("Url är fel, försöka igen");
-            //   return false;
-            // }
             else
             {
             
@@ -52,9 +40,9 @@ namespace RssProjekt.BLL
 
 
         }
-        public bool CheckIf(String kategoriNamn)
+        public bool CheckIf(String namn)
         {
-            if (string.IsNullOrEmpty(kategoriNamn))
+            if (string.IsNullOrEmpty(namn))
             {
                 MessageBox.Show("Du måste fylla i fälten!");
                 return false;

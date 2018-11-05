@@ -219,19 +219,8 @@ namespace RssProjekt
             if (valid.CheckIf(nameToRemove)) {
                 TaBortPod();
 
-            //if (TaBortPod())
-           // {
-                
-             //   try
-              //  {
-                 //   lvPodcast.Items.RemoveAt(lvPodcast.SelectedIndices[0]);
-                //}
-              //  catch (ArgumentOutOfRangeException)
-               // {
-                  //  MessageBox.Show("Du måste klicka på id för att ta bort den från listan!");
-               // }
-
-                   // MessageBox.Show("Podcast tog bort");
+            
+                    MessageBox.Show("Podcast tog bort");
                 }
                 tbName.Clear();
             }
