@@ -450,6 +450,7 @@ namespace RssProjekt
 
         private async Task AsyncLookForUpdates(int time, string id, string url)
         {
+            await Task.Delay(10000);
             bool finns = Podcasts.Any(p => p.PodId.ToString().Equals(id));
             while (finns)
             {
