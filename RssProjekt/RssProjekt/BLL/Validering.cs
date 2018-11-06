@@ -42,13 +42,19 @@ namespace RssProjekt.BLL
         }
         public bool CheckIf(String namn)
         {
-            if (string.IsNullOrEmpty(namn))
+            try
             {
-                MessageBox.Show("Du måste fylla i fälten!");
-                return false;
+                if (string.IsNullOrEmpty(namn))
+                {
+                    MessageBox.Show("Du måste fylla i fälten!");
+                    return false;
+                }
+                return true;
             }
-            else
+           
+           catch(Exception e)
             {
+                MessageBox.Show("" + e.Message);
                 return true;
             }
         }
@@ -98,23 +104,37 @@ namespace RssProjekt.BLL
 
         public bool SeeIfTextBoxIsEmpty(string tb)
         {
-            if (string.IsNullOrEmpty(tb)){
-                return true;
-            }
-            else
+            try
             {
+
+                if (string.IsNullOrEmpty(tb))
+                {
+                    return true;
+                }
+                return false;
+            }catch (Exception e)
+            
+            {
+                MessageBox.Show("" + e.Message);
+               
+
                 return false;
             }
         }
 
         public bool IfCheckboxChanged(int cb)
         {
-            if(cb <= -1)
+            try
             {
-                return false;
+                if (cb <= -1)
+                {
+                    return false;
+                }
+                return true;
             }
-            else
+            catch(Exception e)
             {
+                MessageBox.Show("lag" + e.Message);
                 return true;
             }
         }
