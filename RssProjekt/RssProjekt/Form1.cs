@@ -50,7 +50,8 @@ namespace RssProjekt
             KategoriLista = xmlKategori.LoadSavedKats(KategoriLista);
             UppdateDictionary();
 
-            StartLookingForUppdates();
+            //StartLookingForUppdates();
+            StartLooking();
             UpdatePodList();
             UpdateKatLists();
 
@@ -148,7 +149,7 @@ namespace RssProjekt
                 cbUpdate.SelectedIndex = -1;
                 Podcasts.Add(podToAdd);
                 xmlPodcast.addPodToXml(Podcasts);
-                UpdateTimer(uppdateringToAdd, urlToAdd, idToAdd.ToString());
+                StartLookingForThisPod(podToAdd);
 
                 List<Feed> feedToAdd = xmlFeed.makeFeed(urlToAdd);
                 xmlFeed.addMappForFeed(idToAdd.ToString());
@@ -229,57 +230,10 @@ namespace RssProjekt
 
         }
 
-        public void UpdateTimer(string uppd, string url, string id)
-        {
-            int timerTime = 15000;
-            if(uppd.Equals("30 minuter"))
-            {
-                timerTime = 1800000;
-            } else if(uppd.Equals("1 timme"))
-            {
-                timerTime = 3600000;
-            }
-           
-            else
-            {
-                timerTime = 10800000;
-            }
-            System.Timers.Timer timer = new System.Timers.Timer(timerTime);
-            timer.Elapsed += (sender, e) => { OnTimedEvent(url, id); };
-            timer.Enabled = true;
-        }
+        
 
 
-        private static void OnTimedEvent(string url, string id)
-        {
-            
-            if (uppdateraFeed.CheckIfUpdated(id, url))
-            {
-               
-                var feedToAdd = xmlFeed.makeFeed(url);
-                xmlFeed.AddFeedToXml(feedToAdd, id);
-                UppdateDictionary();
-            }
 
-        }
-
-        static public void UppdateDictionary ()
-        {
-            FeedDictionary = xmlFeed.LoadDictionary(Podcasts);
-        }
-
-
-       
-        public void StartLookingForUppdates()
-        {
-            foreach(Podcast pod in Podcasts)
-            {
-                string uppdatering = pod.Uppdatering;
-                string id = pod.PodId.ToString();
-                string url = pod.RssUrl;
-                UpdateTimer(uppdatering, url, id);
-            }
-        }
 
         private void lvCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -483,6 +437,73 @@ namespace RssProjekt
             }
         }
 
-       
+
+
+        static public void UppdateDictionary()
+        {
+            FeedDictionary = xmlFeed.LoadDictionary(Podcasts);
+        }
+
+
+
+
+        private async Task AsyncLookForUpdates(int time, string id, string url)
+        {
+            while (true)
+            {
+                await Task.Delay(time);
+                if (uppdateraFeed.CheckIfUpdated(id, url))
+                {
+                    var feedToAdd = xmlFeed.makeFeed(url);
+                    xmlFeed.AddFeedToXml(feedToAdd, id);
+                    UppdateDictionary();
+                    
+                    UpdatePodList();
+                }
+                
+            }
+        }
+
+        private int GetTime(string uppd)
+        {
+            int timerTime = 15000;
+             if(uppd.Equals("30 minuter"))
+             {
+                 timerTime = 1800000;
+             } else if(uppd.Equals("1 timme"))
+             {
+                 timerTime = 3600000;
+             }
+            
+             else
+             {
+                 timerTime = 10800000;
+             }
+            return timerTime;
+        }
+
+        private void StartLooking()
+        {
+            foreach (Podcast pod in Podcasts)
+            {
+                int uppdatering = GetTime(pod.Uppdatering);
+                string id = pod.PodId.ToString();
+                string url = pod.RssUrl;
+                var svar = AsyncLookForUpdates(uppdatering, id, url);
+
+            }
+
+        }
+        private void StartLookingForThisPod(Podcast pod)
+        {
+            int uppdatering = GetTime(pod.Uppdatering);
+            string id = pod.PodId.ToString();
+            string url = pod.RssUrl;
+            
+            var svar = AsyncLookForUpdates(uppdatering, id, url);
+
+        }
+
+
     }
 }
