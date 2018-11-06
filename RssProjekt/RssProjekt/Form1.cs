@@ -467,18 +467,18 @@ namespace RssProjekt
         private int GetTime(string uppd)
         {
             int timerTime = 15000;
-             if(uppd.Equals("30 minuter"))
-             {
-                 timerTime = 1800000;
-             } else if(uppd.Equals("1 timme"))
-             {
-                 timerTime = 3600000;
-             }
-            
-             else
-             {
-                 timerTime = 10800000;
-             }
+            // if(uppd.Equals("30 minuter"))
+            // {
+            //     timerTime = 1800000;
+            // } else if(uppd.Equals("1 timme"))
+            // {
+            //     timerTime = 3600000;
+            // }
+            //
+            // else
+            // {
+            //     timerTime = 10800000;
+            // }
             return timerTime;
         }
 

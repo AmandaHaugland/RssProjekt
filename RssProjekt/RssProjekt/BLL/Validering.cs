@@ -56,15 +56,22 @@ namespace RssProjekt.BLL
         
         public bool CheckIfKatExists(string katToCheck, List<string> listToCheck)
         {
-            foreach(var thing in listToCheck)
+            try
             {
-                if (thing.Equals(katToCheck))
+                foreach (var thing in listToCheck)
                 {
-                    MessageBox.Show(katToCheck + " finns redan i listan!");
-                    return true;
+                    if (thing.Equals(katToCheck))
+                    {
+                        MessageBox.Show(katToCheck + " finns redan i listan!");
+                        return true;
+                    }
                 }
+                return false;
+            } catch (Exception e)
+            {
+                MessageBox.Show("Försökte kolla om kategori finns. Felmeddelande: " + e.Message);
+                return true;
             }
-            return false;
         }
         
        public bool IfPodHasKat(string kat, List<Podcast> podcasts)
