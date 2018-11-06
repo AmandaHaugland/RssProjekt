@@ -312,12 +312,13 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(16, 271);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(496, 17);
+            this.label7.Size = new System.Drawing.Size(485, 15);
             this.label7.TabIndex = 23;
-            this.label7.Text = "För att ändra, tryck på podId, gör ändringarna, tryck på poId igen, tryck ändra";
+            this.label7.Text = "För att ändra, tryck på podId, gör ändringarna, tryck ändra,  tryck på poId igen," +
+    " tryck ändra";
             // 
             // lblBeskrivning
             // 
