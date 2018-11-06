@@ -50,7 +50,7 @@ namespace RssProjekt
             KategoriLista = xmlKategori.LoadSavedKats(KategoriLista);
             UppdateDictionary();
 
-            //StartLookingForUppdates();
+           
             StartLooking();
             UpdatePodList();
             UpdateKatLists();
@@ -63,6 +63,7 @@ namespace RssProjekt
            
             Podcasts = xmlPodcast.loadSavedPods(Podcasts);
             Metoder metod = new Metoder();
+            
 
             foreach (var pod in Podcasts)
             {
@@ -70,10 +71,10 @@ namespace RssProjekt
                 int antalAvsnitt = metod.AntalAvsnitt(feed);
                 lvPodcast.Items.Add(pod.MakeListView(pod.PodId.ToString(), pod.RssUrl, pod.Namn, antalAvsnitt.ToString(), pod.Kategori, pod.Uppdatering));
             }
+
             
 
-
-           }
+        }
 
         public void UpdateKatLists()
         {

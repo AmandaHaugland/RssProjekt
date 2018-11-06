@@ -14,27 +14,35 @@ namespace RssProjekt.BLL
        
         public bool CheckIf(String url, String namn, int kategori, int uppdatering)
         {
-          
-            if (string.IsNullOrEmpty(url) ||
-                string.IsNullOrEmpty(namn) ||
-                kategori <= -1 ||
-                uppdatering <= -1
-               )
+            try
             {
-                MessageBox.Show("Du måste fylla i fälten!");
-                return false;
-            }
 
-            Uri uri = null;
-            if (!Uri.TryCreate(url, UriKind.Absolute, out uri) || null == uri)
+
+                if (string.IsNullOrEmpty(url) ||
+                    string.IsNullOrEmpty(namn) ||
+                    kategori <= -1 ||
+                    uppdatering <= -1
+                   )
+                {
+                    MessageBox.Show("Du måste fylla i fälten!");
+                    return false;
+                }
+
+                Uri uri = null;
+                if (!Uri.TryCreate(url, UriKind.Absolute, out uri) || null == uri)
+                {
+                    MessageBox.Show("fel url, försöka igen!");
+                    return false;
+                }
+                else
+                {
+
+                    return true;
+                }
+            } catch (Exception e)
             {
-                MessageBox.Show("fel url, försöka igen!");
+                MessageBox.Show("Något stämmer inte med podfälten.. Felmeddelande: " + e.Message);
                 return false;
-            }
-            else
-            {
-            
-                return true;
             }
            
 
@@ -54,8 +62,8 @@ namespace RssProjekt.BLL
            
            catch(Exception e)
             {
-                MessageBox.Show("" + e.Message);
-                return true;
+                MessageBox.Show("Något blev fel i fältet. Felmeddelande" + e.Message);
+                return false;
             }
         }
 
@@ -115,10 +123,10 @@ namespace RssProjekt.BLL
             }catch (Exception e)
             
             {
-                MessageBox.Show("" + e.Message);
+                MessageBox.Show("Något stämmer inte i fältet. Felmeddelande: " + e.Message);
                
 
-                return false;
+                return true;
             }
         }
 
@@ -134,8 +142,8 @@ namespace RssProjekt.BLL
             }
             catch(Exception e)
             {
-                MessageBox.Show("lag" + e.Message);
-                return true;
+                MessageBox.Show("Något med listorna stämmer inte.. Felmeddelande: " + e.Message);
+                return false;
             }
         }
 
