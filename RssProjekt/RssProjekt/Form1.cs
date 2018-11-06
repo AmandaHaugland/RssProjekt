@@ -450,9 +450,10 @@ namespace RssProjekt
 
         private async Task AsyncLookForUpdates(int time, string id, string url)
         {
-            while (true)
+            bool finns = Podcasts.Any(p => p.PodId.ToString().Equals(id));
+            while (finns)
             {
-                await Task.Delay(time);
+                
                 if (uppdateraFeed.CheckIfUpdated(id, url))
                 {
                     var feedToAdd = xmlFeed.makeFeed(url);
@@ -461,25 +462,25 @@ namespace RssProjekt
                     
                     UpdatePodList();
                 }
-                
+                await Task.Delay(time);
             }
         }
 
         private int GetTime(string uppd)
         {
             int timerTime = 15000;
-            // if(uppd.Equals("30 minuter"))
-            // {
-            //     timerTime = 1800000;
-            // } else if(uppd.Equals("1 timme"))
-            // {
-            //     timerTime = 3600000;
-            // }
-            //
-            // else
-            // {
-            //     timerTime = 10800000;
-            // }
+             if(uppd.Equals("30 minuter"))
+             {
+                 timerTime = 1800000;
+             } else if(uppd.Equals("1 timme"))
+             {
+                 timerTime = 3600000;
+             }
+            
+             else
+             {
+                 timerTime = 10800000;
+             }
             return timerTime;
         }
 
