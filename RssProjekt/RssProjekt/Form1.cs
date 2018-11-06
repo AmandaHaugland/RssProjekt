@@ -3,6 +3,7 @@ using RssProjekt.DL;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -187,15 +188,31 @@ namespace RssProjekt
 
         private void btnTaBortPod_Click(object sender, EventArgs e)
         {
-            var nameToRemove = tbName.Text.Trim();
-            Validering valid = new Validering();
-            if (valid.CheckIf(nameToRemove)) {
-                TaBortPod();
+           // var nameToRemove = tbName.Text.Trim();
+           // Validering valid = new Validering();
+           // if (valid.CheckIf(nameToRemove)) {
+           //     TaBortPod();
+           //
+           // 
+           //         MessageBox.Show("Podcast tog bort");
+           //     }
+           //     tbName.Clear();
 
+            if(lvPodcast.SelectedItems.Count > 0)
             
-                    MessageBox.Show("Podcast tog bort");
-                }
-                tbName.Clear();
+            {
+                TaBortPod();
+                string selectedPod = lvPodcast.SelectedItems[0].Text;
+                Podcasts.Remove(Podcasts.Find(p => p.PodId.Equals(selectedPod)));
+                //  FeedDictionary[selectedPod].Remove(FeedDictionary[selectedPod]);
+                var dir = new DirectoryInfo(@"Feed/" + selectedPod);
+                dir.Delete(true);
+                xmlPodcast.addPodToXml(Podcasts);
+              // FeedDictionary = xmlFeed.LoadDictionary( Podcasts);
+                UpdatePodList();
+
+
+            }
             }
             
 
@@ -205,11 +222,11 @@ namespace RssProjekt
            
             Podcast podToDelete = new Podcast();
             XmlDocument doc = new XmlDocument();
-            doc.Load("xmlpodcasttest.xml");
+            doc.Load("xmlpodcasts.xml");
             foreach (XmlNode xNode in doc.SelectNodes("ArrayOfPodcast/Podcast"))
             {
-                if (xNode.SelectSingleNode("Namn").InnerText == tbName.Text) xNode.ParentNode.RemoveChild(xNode);
-                doc.Save("xmlpodcasttest.xml");
+                if (xNode.SelectSingleNode("PodId").InnerText == lvPodcast.SelectedItems[0].Text) xNode.ParentNode.RemoveChild(xNode);
+                doc.Save("xmlpodcasts.xml");
 
                 UpdatePodList();
 
