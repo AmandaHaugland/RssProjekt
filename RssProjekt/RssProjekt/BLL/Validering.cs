@@ -76,16 +76,24 @@ namespace RssProjekt.BLL
         
        public bool IfPodHasKat(string kat, List<Podcast> podcasts)
         {
-            foreach(var pod in podcasts)
+            try
             {
-                var podKat = pod.Kategori;
-                if (podKat.Equals(kat))
+                foreach (var pod in podcasts)
                 {
-                    MessageBox.Show("Det finns minst en pod med kategorin " + kat + ". Ändra poddarnas kategorier och försök igen!");
-                    return true;
+                    var podKat = pod.Kategori;
+                    if (podKat.Equals(kat))
+                    {
+                        MessageBox.Show("Det finns minst en pod med kategorin " + kat + ". Ändra poddarnas kategorier och försök igen!");
+                        return true;
+                    }
                 }
+                return false;
             }
-            return false;
+            catch(Exception e)
+            {
+                MessageBox.Show("Försökte kolla om det finns kategori med namnet "  + kat + e.Message);
+                return true;
+            }
         }
 
         public bool SeeIfTextBoxIsEmpty(string tb)
