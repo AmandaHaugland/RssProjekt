@@ -201,14 +201,15 @@ namespace RssProjekt
             if(lvPodcast.SelectedItems.Count > 0)
             
             {
-                TaBortPod();
+               
                 string selectedPod = lvPodcast.SelectedItems[0].Text;
                 Podcasts.Remove(Podcasts.Find(p => p.PodId.Equals(selectedPod)));
                 //  FeedDictionary[selectedPod].Remove(FeedDictionary[selectedPod]);
-                var dir = new DirectoryInfo(@"Feed/" + selectedPod);
+                var dir = new DirectoryInfo(@"Feed\" + selectedPod);
                 dir.Delete(true);
                 xmlPodcast.addPodToXml(Podcasts);
-              // FeedDictionary = xmlFeed.LoadDictionary( Podcasts);
+                TaBortPod();
+                // FeedDictionary = xmlFeed.LoadDictionary( Podcasts);
                 UpdatePodList();
 
 
@@ -224,9 +225,10 @@ namespace RssProjekt
             Podcast podToDelete = new Podcast();
             XmlDocument doc = new XmlDocument();
             doc.Load("xmlpodcasts.xml");
+            var text = lvPodcast.SelectedItems[0].Text;
             foreach (XmlNode xNode in doc.SelectNodes("ArrayOfPodcast/Podcast"))
             {
-                if (xNode.SelectSingleNode("PodId").InnerText == lvPodcast.SelectedItems[0].Text) xNode.ParentNode.RemoveChild(xNode);
+                if (xNode.SelectSingleNode("PodId").InnerText == text) xNode.ParentNode.RemoveChild(xNode);
                 doc.Save("xmlpodcasts.xml");
 
                 UpdatePodList();
