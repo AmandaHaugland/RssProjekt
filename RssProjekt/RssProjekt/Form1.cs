@@ -41,11 +41,11 @@ namespace RssProjekt
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Kolla om xml filer finns
+          
             xmlPodcast.ifItExists(Podcasts);
             xmlKategori.ifItExists(KategoriLista);
 
-            //Ladda in xmlfiler till listor
+           
             Podcasts = xmlPodcast.loadSavedPods(Podcasts);
             KategoriLista = xmlKategori.LoadSavedKats(KategoriLista);
             UppdateDictionary();
@@ -59,7 +59,7 @@ namespace RssProjekt
         public void UpdatePodList()
         {
             lvPodcast.Items.Clear();
-           // Podcasts = new List<Podcast>();
+           
             Podcasts = xmlPodcast.loadSavedPods(Podcasts);
             Metoder metod = new Metoder();
 
@@ -126,7 +126,7 @@ namespace RssProjekt
             
             int indexUppdatering = cbUpdate.SelectedIndex;
             int indexKategori = cbCategory.SelectedIndex;
-            //Här ska vi köra en validering.....
+      
 
             Validering valid = new Validering();
            
@@ -188,28 +188,19 @@ namespace RssProjekt
 
         private void btnTaBortPod_Click(object sender, EventArgs e)
         {
-           // var nameToRemove = tbName.Text.Trim();
-           // Validering valid = new Validering();
-           // if (valid.CheckIf(nameToRemove)) {
-           //     TaBortPod();
-           //
-           // 
-           //         MessageBox.Show("Podcast tog bort");
-           //     }
-           //     tbName.Clear();
-
+          
             if(lvPodcast.SelectedItems.Count > 0)
             
             {
                
                 string selectedPod = lvPodcast.SelectedItems[0].Text;
                 Podcasts.Remove(Podcasts.Find(p => p.PodId.Equals(selectedPod)));
-                //  FeedDictionary[selectedPod].Remove(FeedDictionary[selectedPod]);
+                
                 var dir = new DirectoryInfo(@"Feed\" + selectedPod);
                 dir.Delete(true);
                 xmlPodcast.addPodToXml(Podcasts);
                 TaBortPod();
-                // FeedDictionary = xmlFeed.LoadDictionary( Podcasts);
+               
                 UpdatePodList();
 
 
@@ -371,10 +362,10 @@ namespace RssProjekt
             if (lvCategory.SelectedItems.Count > 0)
             {
                 Validering validering = new Validering();
-               // if (validering.CheckIf(tbKategori.Text.Trim()))
+         
                 
                     string selectedKat = lvCategory.SelectedItems[0].Text;
-                    //string taBortKat = tbKategori.Text.Trim();
+                   
 
                     if (!validering.IfPodHasKat(selectedKat, Podcasts))
                     {
@@ -390,8 +381,7 @@ namespace RssProjekt
         private void btnAndraPod_Click(object sender, EventArgs e)
         {
             Podcast podToChange = new Podcast();
-          // List<string> podLista = podToChange.MakeLVItem(tbUrl.Text);
-
+         
 
                  if (lvPodcast.SelectedItems.Count > 0)
             {
@@ -418,7 +408,7 @@ namespace RssProjekt
                             podIdToRemove = pod.PodId;
                             podToRemove = pod;
                             var oldUrl = pod.RssUrl;
-                            //var oldName = pod.Namn;
+                            
                             var oldKat = pod.Kategori;
                             var oldUppdatering = pod.Uppdatering;
                             
@@ -427,7 +417,7 @@ namespace RssProjekt
                                 podToChange.RssUrl = nyUrl;
 
                                 List<Feed> feedToAdd = xmlFeed.makeFeed(nyUrl);
-                                //xmlFeed.addMappForFeed(idToAdd.ToString());
+                                
                                 xmlFeed.AddFeedToXml(feedToAdd, pod.PodId.ToString());
                                 FeedDictionary[pod.PodId.ToString()] = feedToAdd;
                             } else
@@ -464,7 +454,7 @@ namespace RssProjekt
 
 
                     Podcasts.Remove(Podcasts.Find(x => x.PodId.Equals(podIdToRemove)));
-                    //Podcasts.Remove(podToRemove);
+                    
                     Podcasts.Add(podToChange);
 
                 }

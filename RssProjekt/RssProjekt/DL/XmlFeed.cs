@@ -42,7 +42,7 @@ namespace RssProjekt.DL
         }
 
         
-        //Gör en mapp för varje feed. Mappnamn ska vara podId
+        
         public void addMappForFeed (string mappNamn)
         {
             Directory.CreateDirectory("Feed//" + mappNamn);
@@ -67,7 +67,7 @@ namespace RssProjekt.DL
             }
         }
 
-        //Tar in ett id och hämtar och deserialize feeden som är sparad under den id
+       
         public List<Feed> LoadSavedFeeds(string podId)
         {
             var path = "Feed//" + podId + "/feed.xml";
