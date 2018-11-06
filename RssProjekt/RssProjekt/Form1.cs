@@ -26,7 +26,7 @@ namespace RssProjekt
         static XmlFeed xmlFeed = new XmlFeed();
 
         static UppdateraFeed uppdateraFeed = new UppdateraFeed();
-      
+        static Metoder metoder = new Metoder();
         
         public Form1()
         {
@@ -277,7 +277,7 @@ namespace RssProjekt
                 string selectedKat = lvCategory.SelectedItems[0].Text;
               
                 lvPodcast.Items.Clear();
-                var listToUse = ListWhereKat(selectedKat);
+                var listToUse = metoder.ListWhereKat(selectedKat, Podcasts);
                 foreach (var pod in listToUse)
                 {
                     lvPodcast.Items.Add(pod.MakeListView(pod.PodId.ToString(), pod.RssUrl, pod.Namn, pod.Avsnitt.ToString(), pod.Kategori, pod.Uppdatering));
@@ -290,14 +290,7 @@ namespace RssProjekt
                 
         }
 
-        private List<Podcast> ListWhereKat(string kat)
-        {
-            //var query =
-            //    Podcasts.Where(i => i.Kategori.Equals(kat));
-            //
-            List<Podcast> newList = Podcasts.Where(pod => pod.Kategori.Equals(kat)).ToList();
-            return newList;
-        }
+       
 
         private void lvPodcast_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -358,10 +351,10 @@ namespace RssProjekt
             if (lvCategory.SelectedItems.Count > 0)
             {
                 Validering validering = new Validering();
-               
+               // if (validering.CheckIf(tbKategori.Text.Trim()))
                 
                     string selectedKat = lvCategory.SelectedItems[0].Text;
-                    
+                    //string taBortKat = tbKategori.Text.Trim();
 
                     if (!validering.IfPodHasKat(selectedKat, Podcasts))
                     {
@@ -377,7 +370,7 @@ namespace RssProjekt
         private void btnAndraPod_Click(object sender, EventArgs e)
         {
             Podcast podToChange = new Podcast();
-          
+          // List<string> podLista = podToChange.MakeLVItem(tbUrl.Text);
 
 
                  if (lvPodcast.SelectedItems.Count > 0)
@@ -405,7 +398,7 @@ namespace RssProjekt
                             podIdToRemove = pod.PodId;
                             podToRemove = pod;
                             var oldUrl = pod.RssUrl;
-                            
+                            //var oldName = pod.Namn;
                             var oldKat = pod.Kategori;
                             var oldUppdatering = pod.Uppdatering;
                             
@@ -414,7 +407,7 @@ namespace RssProjekt
                                 podToChange.RssUrl = nyUrl;
 
                                 List<Feed> feedToAdd = xmlFeed.makeFeed(nyUrl);
-                               
+                                //xmlFeed.addMappForFeed(idToAdd.ToString());
                                 xmlFeed.AddFeedToXml(feedToAdd, pod.PodId.ToString());
                                 FeedDictionary[pod.PodId.ToString()] = feedToAdd;
                             } else
@@ -451,6 +444,7 @@ namespace RssProjekt
 
 
                     Podcasts.Remove(Podcasts.Find(x => x.PodId.Equals(podIdToRemove)));
+                    //Podcasts.Remove(podToRemove);
                     Podcasts.Add(podToChange);
 
                 }

@@ -52,7 +52,6 @@
   <ItemGroup>
     <Compile Include="BLL\Feed.cs" />
     <Compile Include="BLL\ILists.cs" />
-    <Compile Include="BLL\Kategori.cs" />
     <Compile Include="BLL\Kategorier.cs" />
     <Compile Include="BLL\MethodListView.cs" />
     <Compile Include="BLL\Metoder.cs" />

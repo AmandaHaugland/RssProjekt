@@ -17,6 +17,10 @@ namespace RssProjekt.BLL
             return KategoriLista;
         }
 
-   
+    //    public void AddKatToList(string katToAdd)
+    //    {
+    //        xmlKategori.AddKategoriToXml(katToAdd);
+    //        KategoriLista.Add(katToAdd);
+    //    }
     }
 }

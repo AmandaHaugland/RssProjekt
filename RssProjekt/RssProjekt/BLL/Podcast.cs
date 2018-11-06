@@ -19,13 +19,8 @@ namespace RssProjekt.BLL
         public int Avsnitt { get; set; }
 
         public Podcast() { }
-        //Ska ha metod för att sätta antal avsnitt
+       
 
-
-      //  public List<string> MakeLVItem()
-      //  {
-      //      return new List<string> { RssUrl, Namn, Avsnitt.ToString(), Kategori, Uppdatering };
-      //  }
         public int MakeId(List<Podcast> podList)
         {
             int lengthOfPodList = podList.Count;
@@ -41,11 +36,6 @@ namespace RssProjekt.BLL
      
        }
 
-
-      //  public ListViewItem MakeListView()
-      //  {
-      //      return new ListViewItem(MakeLVItem().ToArray());
-      //  }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
