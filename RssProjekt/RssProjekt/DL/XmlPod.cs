@@ -18,38 +18,55 @@ namespace RssProjekt.DL
         string path = "xmlPodcasts.xml";
         public void ifItExists(List<Podcast> listOfPodcasts)
         {
-            
-            if (!File.Exists(path))
+            try
             {
-                using (Stream fs = new FileStream(path,
-               FileMode.Create, FileAccess.Write, FileShare.None))
+                if (!File.Exists(path))
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(List<Podcast>));
-                    serializer.Serialize(fs, listOfPodcasts);
+                    using (Stream fs = new FileStream(path,
+                   FileMode.Create, FileAccess.Write, FileShare.None))
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(List<Podcast>));
+                        serializer.Serialize(fs, listOfPodcasts);
 
+                    }
                 }
+            } catch(Exception e)
+            {
+                MessageBox.Show("Felmeddelande: " + e.Message);
             }
             
         }
 
         public void addPodToXml(List<Podcast> listOfPodcasts)
         {
-            using (Stream fs = new FileStream(path,
-                FileMode.Create, FileAccess.Write, FileShare.None))
+            try
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(List<Podcast>));
-                serializer.Serialize(fs, listOfPodcasts);
+                using (Stream fs = new FileStream(path,
+                    FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<Podcast>));
+                    serializer.Serialize(fs, listOfPodcasts);
 
+                }
+            } catch(Exception e)
+            {
+                MessageBox.Show("Felmeddelande: " + e.Message);
             }
         }
 
         public List<Podcast> loadSavedPods(List<Podcast> listOfPodcasts)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Podcast>));
-
-            using (FileStream fs = File.OpenRead(path))
+            try
             {
-                listOfPodcasts = (List<Podcast>)serializer.Deserialize(fs);
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Podcast>));
+
+                using (FileStream fs = File.OpenRead(path))
+                {
+                    listOfPodcasts = (List<Podcast>)serializer.Deserialize(fs);
+                }
+            } catch(Exception e)
+            {
+                MessageBox.Show("Felmeddelande: " + e.Message);
             }
             return listOfPodcasts;
         }

@@ -53,7 +53,7 @@ namespace RssProjekt.BLL
             }
         }
 
-        //Använd för att se om det finns flera kategorier
+        
         public bool CheckIfKatExists(string katToCheck, List<string> listToCheck)
         {
             foreach(var thing in listToCheck)

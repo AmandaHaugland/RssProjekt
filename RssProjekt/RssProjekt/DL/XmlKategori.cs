@@ -7,6 +7,7 @@ using System.Xml;
 using System.IO;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using System.Windows.Forms;
 
 namespace RssProjekt.DL
 {
@@ -17,42 +18,55 @@ namespace RssProjekt.DL
         string path = @"XMLKategori.xml";
         public void ifItExists(List<string> katLista)
         {
-
-            if (!File.Exists(path))
+            try
             {
-                //FileStream fs = new FileStream("..\\xmlpodcasttest.xml", FileMode.CreateNew, FileAccess.ReadWrite);
+                if (!File.Exists(path))
+                {
+
+                    using (Stream fs = new FileStream(path,
+                   FileMode.Create, FileAccess.Write, FileShare.None))
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(List<string>));
+                        serializer.Serialize(fs, katLista);
+
+                    }
+                }
+            } catch(Exception e)
+            {
+                MessageBox.Show("Felmeddelande : " + e.Message);
+            }
+           
+        }
+
+        public void AddKategoriToXml (List<string> katLista)
+        {
+            try
+            {
                 using (Stream fs = new FileStream(path,
-               FileMode.Create, FileAccess.Write, FileShare.None))
+                    FileMode.Create, FileAccess.Write, FileShare.None))
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(List<string>));
                     serializer.Serialize(fs, katLista);
 
                 }
-            }
-            else
+            }catch(Exception e)
             {
-                // MessageBox.Show("It exists");
-            }
-        }
-
-        public void AddKategoriToXml (List<string> katLista)
-        {
-            //Directory.CreateDirectory(katNamn);
-            using (Stream fs = new FileStream(path,
-                FileMode.Create, FileAccess.Write, FileShare.None))
-            {
-                XmlSerializer serializer = new XmlSerializer(typeof(List<string>));
-                serializer.Serialize(fs, katLista);
-
+                MessageBox.Show("Felmeddelande: " + e.Message);
             }
         }
         public List<string> LoadSavedKats(List<string> katLista)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<string>));
-
-            using (FileStream fs = File.OpenRead(path))
+            try
             {
-                katLista = (List<string>)serializer.Deserialize(fs);
+                XmlSerializer serializer = new XmlSerializer(typeof(List<string>));
+
+                using (FileStream fs = File.OpenRead(path))
+                {
+                    katLista = (List<string>)serializer.Deserialize(fs);
+                }
+            } catch(Exception e)
+            {
+                MessageBox.Show("Felmeddelande: " + e.Message);
             }
             return katLista;
 

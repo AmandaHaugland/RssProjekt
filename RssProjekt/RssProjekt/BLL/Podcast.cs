@@ -39,20 +39,33 @@ namespace RssProjekt.BLL
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("Namn", Namn);
-            info.AddValue("RssUrl", RssUrl);
-            info.AddValue("Uppdatering", Uppdatering);
-            info.AddValue("PodId", PodId);
+            try
+            {
+                info.AddValue("Namn", Namn);
+                info.AddValue("RssUrl", RssUrl);
+                info.AddValue("Uppdatering", Uppdatering);
+                info.AddValue("PodId", PodId);
+            } catch(Exception e)
+            {
+                MessageBox.Show("Felmeddelande : " + e.Message);
+            }
+            
 
-            //throw new NotImplementedException();
+            
         }
 
         public Podcast(SerializationInfo info, StreamingContext context)
         {
-            Namn = (string)info.GetValue("Namn", typeof(string));
-            RssUrl = (string)info.GetValue("RssUrl", typeof(string));
-            Uppdatering = (string)info.GetValue("Uppdatering", typeof(string));
-            PodId = (int)info.GetValue("PodId", typeof(string));
+            try
+            {
+                Namn = (string)info.GetValue("Namn", typeof(string));
+                RssUrl = (string)info.GetValue("RssUrl", typeof(string));
+                Uppdatering = (string)info.GetValue("Uppdatering", typeof(string));
+                PodId = (int)info.GetValue("PodId", typeof(string));
+            } catch (Exception e)
+            {
+                MessageBox.Show("Felmeddelande: " + e.Message);
+            }
         }
     }
 }

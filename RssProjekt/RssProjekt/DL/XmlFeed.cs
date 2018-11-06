@@ -87,7 +87,7 @@ namespace RssProjekt.DL
         }
 
 
-        //Denna metod ska köras när programmet startar, läser in de sparade poddarna
+ 
         public Dictionary<string, List<Feed>> LoadDictionary(List<Podcast> podcasts)
         {
             
